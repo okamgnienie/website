@@ -1,6 +1,5 @@
-(ns website.visuals
-  (:require [website.navbar :as navbar]))
+(ns website.visuals)
 
-(defn view []
-  [:div [:h2 "Welcome to visuals page"]
-   (navbar/component)])
+(defn visuals []
+  [:div {:class "view"}
+   [:div {:class "container"} "Here are all the visuals"]])

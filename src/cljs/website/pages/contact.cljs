@@ -1,6 +1,5 @@
-(ns website.contact
-  (:require [website.navbar :as navbar]))
+(ns website.contact)
 
-(defn view []
-  [:div [:h2 "Welcome to contact page"]
-   (navbar/component)])
+(defn contact []
+  [:div {:class "view"}
+   [:div {:class "container"} "Social links and contact form"]])

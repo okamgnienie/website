@@ -1,6 +1,5 @@
-(ns website.hours
-  (:require [website.navbar :as navbar]))
+(ns website.hours)
 
-(defn view []
-  [:div [:h2 "Welcome to hours page"]
-   (navbar/component)])
+(defn hours []
+  [:div {:class "view"}
+   [:div {:class "container"} "Hours gallery"]])

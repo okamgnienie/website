@@ -1,6 +1,6 @@
-(ns website.home
-  (:require [website.navbar :as navbar]))
+(ns website.home)
 
-(defn view []
-  [:div [:h2 "Welcome to mekeekke"]
-   (navbar/component)])
+(defn home []
+  [:div {:class "view"}
+   [:div {:class "view__landing container-fluid"} "Landing animation"]
+   [:div {:class "container"} "Some short text about me"]])

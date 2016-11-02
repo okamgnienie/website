@@ -1,6 +1,5 @@
-(ns website.work
-  (:require [website.navbar :as navbar]))
+(ns website.work)
 
-(defn view []
-  [:div [:h2 "Welcome to work page"]
-   (navbar/component)])
+(defn work []
+  [:div {:class "view"}
+   [:div {:class "container"} "All the hackathons and work related info"]])

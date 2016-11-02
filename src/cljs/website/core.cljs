@@ -2,11 +2,14 @@
     (:require [reagent.core :as reagent :refer [atom]]
               [reagent.session :as session]
 
-              [website.home :as home]
-              [website.work :as work]
-              [website.hours :as hours]
-              [website.visuals :as visuals]
-              [website.contact :as contact]
+              [website.home :refer [home]]
+              [website.work :refer [work]]
+              [website.hours :refer [hours]]
+              [website.visuals :refer [visuals]]
+              [website.contact :refer [contact]]
+
+              [website.styles :refer [style]]
+              [website.navbar :refer [navbar]]
 
               [secretary.core :as secretary :include-macros true]
               [accountant.core :as accountant]))
@@ -15,25 +18,29 @@
 ;; Views
 
 (defn current-page []
-  [:div [(session/get :current-page)]])
+  [:div
+   [:link {:href "https://fonts.googleapis.com/css?family=Roboto:300,400" :rel "stylesheet"}]
+   (style)
+   (navbar)
+   [(session/get :current-page)]])
 
 ;; -------------------------
 ;; Routes
 
 (secretary/defroute "/" []
-  (session/put! :current-page #'home/view))
+  (session/put! :current-page #'home))
 
 (secretary/defroute "/work" []
-  (session/put! :current-page #'work/view))
+  (session/put! :current-page #'work))
 
 (secretary/defroute "/hours" []
-  (session/put! :current-page #'hours/view))
+  (session/put! :current-page #'hours))
 
 (secretary/defroute "/visuals" []
-  (session/put! :current-page #'visuals/view))
+  (session/put! :current-page #'visuals))
 
 (secretary/defroute "/contact" []
-  (session/put! :current-page #'contact/view))
+  (session/put! :current-page #'contact))
 
 ;; -------------------------
 ;; Initialize app
