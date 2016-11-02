@@ -1,8 +1,10 @@
 (ns website.reset-styles
   (:require [garden.core :refer [css]]
-            [garden.selectors :refer [blockquote q before after]]))
+            [garden.selectors :refer [defselector blockquote q before after]]))
 
 ;; --- - --- - --- RESET STYLES --- - --- - ---
+
+(defselector *)
 
 (def reset
   (css [:html :body :div :span :applet :object :iframe
@@ -40,4 +42,10 @@
         (blockquote after)
         (q before)
         (q after)
-        {:content "none"}]))
+        {:content "none"}]
+
+       ;; - BOX SIZING -
+
+       [:html {:box-sizing "border-box"}]
+
+       [:* (* before) (* after) {:box-sizing "inherit"}]))
