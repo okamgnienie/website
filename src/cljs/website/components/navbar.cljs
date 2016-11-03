@@ -17,7 +17,8 @@
     [:li {:class "navbar__item navbar__item--home"}
      [:a {:href "/"}
       [:div {:class "navbar__title"}
-       [:span "Ho"] "me"]]]
+       [:div {:class "navbar__animated-underline"}
+        [:span "Ho"] "me"]]]]
 
     ;; - WORK -
 
