@@ -37,8 +37,9 @@
                       :margin-right "-4px"}
         [:a {:text-decoration "none"
              :color black-1}]
-        [navbar__active navbar__animated-underline {:width "100%"
-                                                    :background-color "#111"}]]
+        [navbar__active navbar__animated-underline
+         [:&:after {:width "100%"
+                    :background-color black-1}]]]
 
        [navbar__magic {:display "none"}]
 
@@ -53,25 +54,35 @@
                    :display "block"
                    :margin "auto"
                    :height "1px"
-                   :width "0px"
+                   :width 0
                    :background "transparent"
                    :transition "width .5s ease, background-color .5s ease"}]
-        [:&.active {:width "100%"
-                    :background-color "#111"}]]
+        [:&.active:after {:width "100%"
+                          :background-color "#111"}]]
 
        ;; - HOME -
 
        [navbar__item--home
         [navbar__title {:padding-left 0
-                        :transition "padding-left 0.2s ease-in-out"}
-         [navbar__animated-underline {:width "60px"}]]
+                        :width "71px"
+                        :background-color gray-1
+                        :transition "background-color 0.2s ease-in-out, width 0.2s ease-in-out, padding-left 0.2s ease-in-out, color 0.2s ease-in-out"
+                        :color black-1}
+         [:span {:visibility "visible"
+                 :display "inline-block"
+                 :width "27px"
+                 :transition "width 0.2s ease-in-out, visibility 0.2s ease-in-out"}]]
         [:&:hover {:animation "home 9s cubic-bezier(0.4, 0, 1, 1) infinite"
                    :background-image "url(/images/home.jpg)"
-                   :background-size "89px"
+                   :background-size "88px"
                    :color white-1}
-         [navbar__title {:transition "padding-left 0.2s ease-in-out"
-                         :padding-left "15px"}
-          [:span {:visibility "hidden"
+         [navbar__title {:transition "background-color 0.2s ease-in-out, width 0.2s ease-in-out, padding-left 0.2s ease-in-out, color 0.2s ease-in-out"
+                         :width "88px"
+                         :background-color "rgba(0,0,0,0.3)"
+                         :padding-left "15px"
+                         :color "white"}
+          [navbar__animated-underline
+           [:&:after {:background-color white-1}]
+           [:span {:visibility "hidden"
                   :width 0
-                  :display "inline-block"
-                  :transition "all 0.2s ease-in-out"}]]]]))
+                  :transition "width 0.2s ease-in-out, visibility 0.2s ease-in-out"}]]]]]))
