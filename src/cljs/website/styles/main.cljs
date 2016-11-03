@@ -1,14 +1,14 @@
 (ns website.main-styles
   (:require [garden.core :refer [css]]
             [garden.selectors :refer [defclass]]
-            [website.variables :refer [gray-1 gray-2 main-font]]))
+            [website.variables :refer [gray-1 white-1 main-font]]))
 
 (def main
   (css [:html {:background-color gray-1
                :font-family main-font
                :min-height "100%"}]
 
-       [:body {:background-color gray-2
+       [:body {:background-color white-1
                :min-height "100%"}]
 
        [(defclass view) {:margin "0 auto"

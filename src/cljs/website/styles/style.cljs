@@ -5,4 +5,4 @@
             [website.main-styles :refer [main]]))
 
 (defn style []
-  [:style reset main styles])
+  [:style reset main styles home])

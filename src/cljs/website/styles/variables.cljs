@@ -7,8 +7,13 @@
 
 ;; --- - --- - --- COLORS --- - --- - ---
 
+(def white-1 "#ffffff")
+
 (def gray-1 "#f0f0f0")
-(def gray-2 "#ffffff")
+(def gray-2 "#f9f9f9")
+
+(def black-1 "#111")
+
 
 ;; --- - --- - --- FONTS --- - --- - ---
 
