@@ -14,6 +14,12 @@
 
 (def black-1 "#111")
 
+(def cyan-1 "#01FFE5")
+
+(def red-1 "#FF0000")
+
+(def yellow-1 "#F5FF00")
+
 
 ;; --- - --- - --- FONTS --- - --- - ---
 
