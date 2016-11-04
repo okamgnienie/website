@@ -29,7 +29,7 @@
        [:div {:class "navbar__digital-line navbar__digital-line--red"}]
        [:div {:class "navbar__digital-line navbar__digital-line--yellow"}]
        [:canvas {:class "navbar__brain-waves" :width "40" :height "50"}]]
-      [:div {:class "navbar__title navbar__title--work"}
+      [:div {:class "navbar__title navbar__title--work navbar__animated-underline"}
        [:span "Work"]]]]
 
     ;; - HOURS -
