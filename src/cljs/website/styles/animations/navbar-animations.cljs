@@ -71,10 +71,16 @@
 
                      [:to {:background-position "0 -2000px"}])))
 
+;; --- - --- - --- WORK --- - --- - ---
 
+(def work
+  (css vendors
+       (at-keyframes "work"
+                     [:from {:left "90px"}]
 
+                     [:to {:left "125px"}])))
 
 ;; --- - --- - --- ALL ANIMATIONS --- - --- - ---
 
 (def all
-  (str radio-waves navbar-rainbow hourglass home))
+  (str radio-waves navbar-rainbow hourglass home work))

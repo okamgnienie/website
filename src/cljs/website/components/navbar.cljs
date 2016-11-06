@@ -28,7 +28,15 @@
        [:div {:class "navbar__digital-line navbar__digital-line--cyan"}]
        [:div {:class "navbar__digital-line navbar__digital-line--red"}]
        [:div {:class "navbar__digital-line navbar__digital-line--yellow"}]
-       [:canvas {:class "navbar__brain-waves" :width "40" :height "50"}]]
+
+       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--cyan navbar__digital-line-cover--cyan-1"}]
+       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--cyan navbar__digital-line-cover--cyan-2"}]
+
+       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--red navbar__digital-line-cover--red-1"}]
+       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--red navbar__digital-line-cover--red-2"}]
+
+       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--yellow navbar__digital-line-cover--yellow-1"}]
+       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--yellow navbar__digital-line-cover--yellow-2"}]]
       [:div {:class "navbar__title navbar__title--work navbar__animated-underline"}
        [:span "Work"]]]]
 

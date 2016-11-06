@@ -30,6 +30,21 @@
 (defclass navbar__digital-line--red)
 (defclass navbar__digital-line--yellow)
 
+(defclass navbar__digital-line-cover)
+(defclass navbar__digital-line-cover--cyan)
+(defclass navbar__digital-line-cover--red)
+(defclass navbar__digital-line-cover--yellow)
+
+(defclass navbar__digital-line-cover--cyan-1)
+(defclass navbar__digital-line-cover--cyan-2)
+
+(defclass navbar__digital-line-cover--red-1)
+(defclass navbar__digital-line-cover--red-2)
+
+(defclass navbar__digital-line-cover--yellow-1)
+(defclass navbar__digital-line-cover--yellow-2)
+
+
 ;; Animations
 (defclass navbar__brain-waves)
 (defclass navbar__animated-underline)
@@ -94,7 +109,7 @@
    [(navbar__animated-underline--active after) {:width "100%"
                                               :background-color black-1}]
 
-   ;; - - - WORK - - -
+   ;; - - - HOME - - -
 
    [navbar__item--home
     [navbar__title {:padding-left 0
@@ -104,7 +119,7 @@
              :display "inline-block"
              :width "27px"
              :transition "width 0.2s ease-in-out, visibility 0.2s ease-in-out"}]]
-    [:&:hover {:animation "home 9s cubic-bezier(0.4, 0, 1, 1) infinite"
+    [:&:hover {:animation "home 10s linear infinite"
                :background-image "url(/images/home.jpg)"
                :background-size "88px"
                :color white-1}
@@ -141,6 +156,29 @@
 
    [navbar__digital-line--yellow {:top "35px"
                                   :background-color yellow-1}]
+
+   [navbar__digital-line-cover {:position "absolute"
+                                :background-color black-1
+                                :animation "work 0.5s linear infinite"
+                                :left "90px"
+                                :height "2px"}]
+
+   [navbar__digital-line-cover--cyan {:top "14px"}]
+   [navbar__digital-line-cover--cyan-1 {:animation-delay "1s"
+                                        :width "7px"}]
+   [navbar__digital-line-cover--cyan-2 {:animation-delay "0.3s"
+                                        :width "4px"}]
+
+   [navbar__digital-line-cover--red {:top "25px"}]
+   [navbar__digital-line-cover--red-1 {:animation-delay "0.25s"
+                                       :width "4px"}]
+   [navbar__digital-line-cover--red-2 {:width "4px"}]
+
+   [navbar__digital-line-cover--yellow {:top "35px"}]
+   [navbar__digital-line-cover--yellow-1 {:animation-delay "1.1s"
+                                          :width "4px"}]
+   [navbar__digital-line-cover--yellow-2 {:animation-delay "0.45s"
+                                          :width "8px"}]
 
    [navbar__brain-waves {:position "absolute"
                          :top "0"
