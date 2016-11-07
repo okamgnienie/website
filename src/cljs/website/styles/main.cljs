@@ -5,7 +5,7 @@
             [website.variables :refer [gray-1 white-1 main-font]]))
 
 (defclass container)
-(defclass fluid-container)
+(defclass container-fluid)
 
 (defclass article)
 (defclass article__separator)
@@ -39,7 +39,7 @@
                              :margin "0 auto"}]
                  [article {:padding "0 10px 20px 0"}])
 
-       [fluid-container {:width "100%"}]
+       [container-fluid {:width "100%"}]
 
        [:p {:margin-bottom "10px"
             :font-size "19px"
