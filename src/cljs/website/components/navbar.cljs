@@ -1,7 +1,7 @@
 (ns website.navbar
   (:require [garden.core :refer [css]]))
 
-(defn navbar []
+(defn navbar [state-name]
   [:div {:class "navbar container-fluid"}
 
    ;; - - - MOBILE NAVBAR - - -
@@ -17,7 +17,7 @@
     [:li {:class "navbar__item navbar__item--home"}
      [:a {:href "/"}
       [:div {:class "navbar__title"}
-       [:div {:class "navbar__animated-underline"}
+       [:div {:class (str "navbar__animated-underline" (if (= @state-name "home") " navbar__animated-underline--active"))}
         [:span "Ho"] "me"]]]]
 
     ;; - WORK -
@@ -37,7 +37,7 @@
 
        [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--yellow navbar__digital-line-cover--yellow-1"}]
        [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--yellow navbar__digital-line-cover--yellow-2"}]]
-      [:div {:class "navbar__title navbar__title--work navbar__animated-underline"}
+      [:div {:class (str "navbar__title navbar__title--work navbar__animated-underline" (if (= @state-name "work") " navbar__animated-underline--active"))}
        [:span "Work"]]]]
 
     ;; - HOURS -
@@ -45,7 +45,7 @@
     [:li {:class "navbar__item navbar__item--hours"}
      [:a {:href "/hours"}
       ;; [:div {:class "navbar__magic"}]
-      [:div {:class "navbar__title"}
+      [:div {:class (str "navbar__title navbar__animated-underline" (if (= @state-name "hours") " navbar__animated-underline--active"))}
        [:span "Hours"]]]]
 
     ;; - VISUALS -
@@ -61,7 +61,7 @@
       ;;  [:div {:class "blue"}]
       ;;  [:div {:class "purple"}]
       ;;  [:div {:class "pink"}]]
-      [:div {:class "navbar__title"}
+      [:div {:class (str "navbar__title navbar__animated-underline" (if (= @state-name "visuals") " navbar__animated-underline--active"))}
        [:span "Visuals"]]]]
 
     ;; - CONTACT -
@@ -69,5 +69,5 @@
     [:li {:class "navbar__item navbar__item--contact"}
      [:a {:href "/contact"}
       ;; [:div {:class "navbar__magic"}]
-      [:div {:class "navbar__title"}
+      [:div {:class (str "navbar__title navbar__animated-underline" (if (= @state-name "contact") " navbar__animated-underline--active"))}
        [:span "Contact"]]]]]])

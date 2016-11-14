@@ -1,6 +1,7 @@
 (ns website.core
     (:require [reagent.core :as reagent :refer [atom]]
               [reagent.session :as session]
+              [reagent.core :as r]
 
               [website.home :refer [home]]
               [website.work :refer [work]]
@@ -14,6 +15,8 @@
               [secretary.core :as secretary :include-macros true]
               [accountant.core :as accountant]))
 
+(def state-name (r/atom "home"))
+
 ;; -------------------------
 ;; Views
 
@@ -21,26 +24,31 @@
   [:div
    [:link {:href "https://fonts.googleapis.com/css?family=Roboto:300,400" :rel "stylesheet"}]
    (style)
-   (navbar)
+   [navbar state-name]
    [(session/get :current-page)]])
 
 ;; -------------------------
 ;; Routes
 
 (secretary/defroute "/" []
-  (session/put! :current-page #'home))
+  ((session/put! :current-page #'home)
+   (reset! state-name "home")))
 
 (secretary/defroute "/work" []
-  (session/put! :current-page #'work))
+  ((session/put! :current-page #'work)
+   (reset! state-name "work")))
 
 (secretary/defroute "/hours" []
-  (session/put! :current-page #'hours))
+  ((session/put! :current-page #'hours)
+   (reset! state-name "hours")))
 
 (secretary/defroute "/visuals" []
-  (session/put! :current-page #'visuals))
+  ((session/put! :current-page #'visuals)
+   (reset! state-name "visuals")))
 
 (secretary/defroute "/contact" []
-  (session/put! :current-page #'contact))
+  ((session/put! :current-page #'contact)
+   (reset! state-name "contact")))
 
 ;; -------------------------
 ;; Initialize app
