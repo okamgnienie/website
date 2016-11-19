@@ -24,3 +24,8 @@
 ;; --- - --- - --- FONTS --- - --- - ---
 
 (def main-font "'Roboto'")
+
+;; --- - --- - --- MEDIA QUERIES --- - --- - ---
+
+(def mobile-max "960px")
+(def desktop-min "961px")

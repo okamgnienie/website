@@ -34,7 +34,7 @@
                  :text-align "justify"}]
 
 
-       (at-media {:min-width "961px"}
+       (at-media {:min-width desktop-min}
                  [container {:max-width "960px"
                              :margin "0 auto"}]
                  [article {:padding "0 10px 20px 0"}])
