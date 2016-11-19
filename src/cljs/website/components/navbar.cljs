@@ -16,7 +16,7 @@
 
     [:li {:class "navbar__item navbar__item--home"}
      [:a {:href "/"}
-      [:div {:class "navbar__title"}
+      [:div {:class "navbar__title navbar__title--home"}
        [:div {:class (str "navbar__animated-underline" (if (= @state-name "home") " navbar__animated-underline--active"))}
         [:span "Ho"] "me"]]]]
 

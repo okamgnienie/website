@@ -1,7 +1,8 @@
 (ns website.navbar-styles
   (:require [garden.core :refer [css]]
             [garden.selectors :refer [defclass defselector ul li a hover after before]]
-            [website.variables :refer [white-1 gray-1 black-1 main-font cyan-1 red-1 yellow-1]]))
+            [garden.stylesheet :refer [at-media]]
+            [website.variables :refer [white-1 gray-1 black-1 main-font cyan-1 red-1 yellow-1 mobile-max]]))
 
 ;; Main
 (defclass navbar)
@@ -15,6 +16,7 @@
 
 ;; Titles
 (defclass navbar__title)
+(defclass navbar__title--home)
 (defclass navbar__title--work)
 
 ;; Magic
@@ -111,28 +113,37 @@
 
    ;; - - - HOME - - -
 
-   [navbar__item--home
-    [navbar__title {:padding-left 0
-                    :width "71px"
-                    :transition "background-color 0.2s ease-in-out, width 0.2s ease-in-out, padding-left 0.2s ease-in-out, color 0.2s ease-in-out"}
-     [:span {:visibility "visible"
-             :display "inline-block"
-             :width "27px"
-             :transition "width 0.2s ease-in-out, visibility 0.2s ease-in-out"}]]
-    [:&:hover {:animation "home 10s linear infinite"
-               :background-image "url(/images/home.jpg)"
-               :background-size "88px"
-               :color white-1}
-     [navbar__title {:transition "background-color 0.2s ease-in-out, width 0.2s ease-in-out, padding-left 0.2s ease-in-out, color 0.2s ease-in-out"
-                     :width "88px"
-                     :background-color "rgba(0,0,0,0.3)"
-                     :padding-left "15px"
-                     :color "white"}
-      [navbar__animated-underline
-       [:&:after {:background-color white-1}]
-       [:span {:visibility "hidden"
-               :width 0
-               :transition "width 0.2s ease-in-out, visibility 0.2s ease-in-out"}]]]]]
+   [navbar__title--home {:padding-left 0
+                         :width "71px"
+                         :transition "background-color 0.2s ease-in-out, width 0.2s ease-in-out, padding-left 0.2s ease-in-out, color 0.2s ease-in-out"}
+    [:span {:visibility "visible"
+            :display "inline-block"
+            :width "27px"
+            :transition "width 0.2s ease-in-out, visibility 0.2s ease-in-out"}]]
+
+   ;; Hover
+
+   [(navbar__item--home hover) {:animation "home 10s linear infinite"
+                                :background-image "url(/images/home.jpg)"
+                                :background-size "88px"
+                                :color white-1}
+    [navbar__title--home {:transition "background-color 0.2s ease-in-out, width 0.2s ease-in-out, padding-left 0.2s ease-in-out, color 0.2s ease-in-out"
+                          :width "88px"
+                          :background-color "rgba(0,0,0,0.3)"
+                          :padding-left "15px"
+                          :color "white"}
+     [navbar__animated-underline
+      [:&:after {:background-color white-1}]
+      [:span {:visibility "hidden"
+              :width 0
+              :transition "width 0.2s ease-in-out, visibility 0.2s ease-in-out"}]]]]
+
+   ;; Media query
+
+   (at-media {:max-width mobile-max}
+             [navbar__title--home {:padding-left "10px"
+                                   :width "81px"}])
+
 
    ;; - - - WORK - - -
 
