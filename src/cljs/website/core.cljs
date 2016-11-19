@@ -11,6 +11,7 @@
 
               [website.styles :refer [style]]
               [website.navbar :refer [navbar]]
+              [website.footer :refer [footer]]
 
               [secretary.core :as secretary :include-macros true]
               [accountant.core :as accountant]))
@@ -26,7 +27,8 @@
    [:link {:rel "stylesheet" :href "https://fonts.googleapis.com/css?family=Roboto:300,400"}]
    (style)
    [navbar state-name]
-   [(session/get :current-page)]])
+   [(session/get :current-page)]
+   [footer]])
 
 ;; -------------------------
 ;; Routes
