@@ -2,7 +2,7 @@
   (:require [garden.core :refer [css]]
             [garden.selectors :refer [defclass p]]
             [garden.stylesheet :refer [at-media]]
-            [website.variables :refer [gray-1 white-1 main-font]]))
+            [website.variables :refer [gray-1 white-1 main-font desktop-min]]))
 
 (defclass container)
 (defclass container-fluid)
