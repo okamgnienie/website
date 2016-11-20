@@ -13,6 +13,7 @@
 (defclass navbar__item)
 (defclass navbar__item--home)
 (defclass navbar__item--work)
+(defclass navbar__item--hours)
 
 ;; Titles
 (defclass navbar__title)
@@ -22,6 +23,7 @@
 ;; Magic
 (defclass navbar__magic)
 (defclass navbar__magic--work)
+(defclass navbar__magic--hours)
 
 ;; States
 (defclass navbar__active)
@@ -46,6 +48,9 @@
 (defclass navbar__digital-line-cover--yellow-1)
 (defclass navbar__digital-line-cover--yellow-2)
 
+;; Hours button related
+(defclass navbar__time)
+(defclass navbar__time--active)
 
 ;; Animations
 (defclass navbar__brain-waves)
@@ -70,14 +75,15 @@
 
    [navbar__mobile {:display "none"}]
 
-   [navbar__desktop {:height navbar-height}]
+   [navbar__desktop {:height navbar-height
+                     :position "relative"}]
 
    [navbar__item {:display "inline-block"
                   :font-size "20px"
                   :cursor "pointer"
                   :text-transform "uppercase"
                   :position "relative"
-                  :margin-right "-4px"
+                  ;; :margin-right "-4px"
                   :height navbar-height}
     [:a {:text-decoration "none"
          :color black-1
@@ -93,7 +99,8 @@
 
    [navbar__magic {:display "block"
                    :height "100%"
-                   :width "100%"}]
+                   :width "100%"
+                   :position "absolute"}]
 
    ;; - - - ACTIVE - - -
 
@@ -114,7 +121,7 @@
    ;; - - - HOME - - -
 
    [navbar__title--home {:padding-left 0
-                         :width "71px"
+                         :width "72px"
                          :transition "background-color 0.2s ease-in-out, width 0.2s ease-in-out, padding-left 0.2s ease-in-out, color 0.2s ease-in-out"}
     [:span {:visibility "visible"
             :display "inline-block"
@@ -204,4 +211,28 @@
                         :padding "0 0 0 0"}]
 
    [(navbar__item--work hover) {:transition "padding 0.2s ease-in-out"
-                                :padding "0 30px 0 10px"}]))
+                                :padding "0 30px 0 10px"}]
+
+   ;; - - - HOURS - - -
+
+   [navbar__item--hours {:position "initial"}]
+
+   [navbar__time {:position "absolute"
+                  :z-index "-1"
+                  :display "none"
+                  :border-top "black 1px solid"
+                  :border-bottom "white 1px solid"}]
+
+
+   [navbar__time--active {:display "block"
+                          :animation "hourglass-1 1.2s linear"
+                          :pointer-events "none"
+                          :cursor "default"}]
+
+   [navbar__magic--hours {:position "initial"
+                          :height 0}]
+
+   ;; Media query
+
+   (at-media {:max-width mobile-max}
+             [navbar__time--active {:animation "hourglass-2 1.2s linear"}])))

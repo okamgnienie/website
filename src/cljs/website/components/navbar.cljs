@@ -1,6 +1,34 @@
 (ns website.navbar
   (:require [garden.core :refer [css]]))
 
+(def interval (atom nil))
+
+(defn get-time-elem []
+  (js/document.querySelector "div.navbar__time:not(.navbar__time--active)"))
+
+(defn animation-finished [elem handler]
+  (.addEventListener elem "webkitAnimationEnd" handler)
+  (.addEventListener elem "mozAnimationEnd" handler)
+  (.addEventListener elem "MSAnimationEnd" handler)
+  (.addEventListener elem "oanimationend" handler)
+  (.addEventListener elem "animationend" handler))
+
+(defn start-animating-time []
+  (reset!
+   interval
+   (js/setInterval
+    (fn []
+      (let [next-elem (get-time-elem)]
+        (set! (.-className next-elem) "navbar__time navbar__time--active")
+        (animation-finished
+         next-elem
+         (fn []
+           (set! (.-className next-elem) "navbar__time"))))) 120)))
+
+(defn stop-animating-time []
+  (.clearInterval js/window @interval))
+
+
 (defn navbar [state-name]
   [:div {:class "navbar container-fluid"}
 
@@ -42,9 +70,23 @@
 
     ;; - HOURS -
 
-    [:li {:class "navbar__item navbar__item--hours"}
+    [:li {:class "navbar__item navbar__item--hours"
+          :on-mouse-over #(start-animating-time)
+          :on-mouse-out #(stop-animating-time)}
      [:a {:href "/hours"}
-      ;; [:div {:class "navbar__magic"}]
+      [:div {:class "navbar__magic navbar__magic--hours"}
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]
+       [:div {:class "navbar__time"}]]
       [:div {:class (str "navbar__title navbar__animated-underline" (if (= @state-name "hours") " navbar__animated-underline--active"))}
        [:span "Hours"]]]]
 
