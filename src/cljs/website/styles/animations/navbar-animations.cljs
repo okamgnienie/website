@@ -45,22 +45,41 @@
 
 ;; --- - --- - --- HOURGLASS --- - --- - ---
 
-(def hourglass
+;; For wide screen
+(def hourglass-1
   (css vendors
-       (at-keyframes "hourglass"
+       (at-keyframes "hourglass-1"
                      [:0% {:top "48px"
                            :opacity 0.4
                            :width "96px"
-                           :left "163px"}]
+                           :left "160px"}]
 
                      [:50% {:top "120px"
                             :width 0
-                            :left "211px"}]
+                            :left "208px"}]
 
                      [:100% {:top "192px"
                              :opacity 0.05
                              :width "96px"
-                             :left "163px"}])))
+                             :left "160px"}])))
+
+;; For narrow screen
+(def hourglass-2
+  (css vendors
+       (at-keyframes "hourglass-2"
+                     [:0% {:top "48px"
+                           :opacity 0.4
+                           :width "96px"
+                           :left "170px"}]
+
+                     [:50% {:top "120px"
+                            :width 0
+                            :left "218px"}]
+
+                     [:100% {:top "192px"
+                             :opacity 0.05
+                             :width "96px"
+                             :left "170px"}])))
 
 ;; --- - --- - --- HOME --- - --- - ---
 
@@ -83,4 +102,4 @@
 ;; --- - --- - --- ALL ANIMATIONS --- - --- - ---
 
 (def all
-  (str radio-waves navbar-rainbow hourglass home work))
+  (str radio-waves navbar-rainbow hourglass-1 hourglass-2 home work))
