@@ -2,7 +2,22 @@
   (:require [garden.core :refer [css]]
             [garden.selectors :refer [defclass defselector ul li a hover after before]]
             [garden.stylesheet :refer [at-media]]
-            [website.variables :refer [white-1 gray-1 black-1 main-font cyan-1 red-1 yellow-1 mobile-max]]))
+            [website.variables :refer [white-1
+                                       gray-1
+                                       black-1
+                                       main-font
+                                       cyan-1
+                                       red-1
+                                       yellow-1
+                                       mobile-max
+                                       red-1
+                                       orange-1
+                                       yellow-1
+                                       green-1
+                                       cyan-1
+                                       blue-1
+                                       purple-1
+                                       pink-1]]))
 
 ;; Main
 (defclass navbar)
@@ -14,16 +29,19 @@
 (defclass navbar__item--home)
 (defclass navbar__item--work)
 (defclass navbar__item--hours)
+(defclass navbar__item--visuals)
 
 ;; Titles
 (defclass navbar__title)
 (defclass navbar__title--home)
 (defclass navbar__title--work)
+(defclass navbar__title--visuals)
 
 ;; Magic
 (defclass navbar__magic)
 (defclass navbar__magic--work)
 (defclass navbar__magic--hours)
+(defclass navbar__magic--visuals)
 
 ;; States
 (defclass navbar__active)
@@ -51,6 +69,16 @@
 ;; Hours button related
 (defclass navbar__time)
 (defclass navbar__time--active)
+
+;; Visuals button related
+(defclass navbar__rainbow--red)
+(defclass navbar__rainbow--orange)
+(defclass navbar__rainbow--yellow)
+(defclass navbar__rainbow--green)
+(defclass navbar__rainbow--cyan)
+(defclass navbar__rainbow--blue)
+(defclass navbar__rainbow--purple)
+(defclass navbar__rainbow--pink)
 
 ;; Animations
 (defclass navbar__brain-waves)
@@ -235,4 +263,42 @@
    ;; Media query
 
    (at-media {:max-width mobile-max}
-             [navbar__time--active {:animation "hourglass-2 1.2s linear"}])))
+             [navbar__time--active {:animation "hourglass-2 1.2s linear"}])
+
+   ;; - - - VISUALS - - -
+
+   [navbar__magic--visuals {:overflow "hidden"}]
+
+   [navbar__title--visuals {:margin 0
+                            :width "108px"
+                            :transition "margin 0.2s ease-in-out"}]
+
+   [navbar__rainbow--red {:background-color red-1
+                          :animation "visuals-1 0.5s infinite"}]
+
+   [navbar__rainbow--orange {:background-color orange-1
+                             :animation "visuals-2 0.4s infinite"}]
+
+   [navbar__rainbow--yellow {:background-color yellow-1
+                             :animation "visuals-3 0.9s infinite"}]
+
+   [navbar__rainbow--green {:background-color green-1
+                            :animation "visuals-2 0.4s infinite"}]
+
+   [navbar__rainbow--cyan {:background-color cyan-1
+                           :animation "visuals-1 0.6s infinite"}]
+
+   [navbar__rainbow--blue {:background-color blue-1
+                           :animation "visuals-3 0.7s infinite"}]
+
+   [navbar__rainbow--purple {:background-color purple-1
+                             :animation "visuals-3 0.5s infinite"}]
+
+   [navbar__rainbow--pink {:background-color pink-1
+                           :animation "visuals-1 0.3s infinite"}]
+
+   ;; Hover
+
+   [(navbar__item--visuals hover)
+    [navbar__title--visuals {:margin "0 3px 0 30px"
+                             :transition "margin 0.2s ease-in-out"}]]))

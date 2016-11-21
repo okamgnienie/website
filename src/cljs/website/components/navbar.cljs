@@ -94,16 +94,16 @@
 
     [:li {:class "navbar__item navbar__item--visuals"}
      [:a {:href "/visuals"}
-      ;; [:div {:class "navbar__magic"}
-      ;;  [:div {:class "red"}]
-      ;;  [:div {:class "orange"}]
-      ;;  [:div {:class "yellow"}]
-      ;;  [:div {:class "green"}]
-      ;;  [:div {:class "cyan"}]
-      ;;  [:div {:class "blue"}]
-      ;;  [:div {:class "purple"}]
-      ;;  [:div {:class "pink"}]]
-      [:div {:class (str "navbar__title navbar__animated-underline" (if (= @state-name "visuals") " navbar__animated-underline--active"))}
+      [:div {:class "navbar__magic navbar__magic--visuals"}
+       [:div {:class "navbar__rainbow navbar__rainbow--red"}]
+       [:div {:class "navbar__rainbow navbar__rainbow--orange"}]
+       [:div {:class "navbar__rainbow navbar__rainbow--yellow"}]
+       [:div {:class "navbar__rainbow navbar__rainbow--green"}]
+       [:div {:class "navbar__rainbow navbar__rainbow--cyan"}]
+       [:div {:class "navbar__rainbow navbar__rainbow--blue"}]
+       [:div {:class "navbar__rainbow navbar__rainbow--purple"}]
+       [:div {:class "navbar__rainbow navbar__rainbow--pink"}]]
+      [:div {:class (str "navbar__title navbar__title--visuals navbar__animated-underline" (if (= @state-name "visuals") " navbar__animated-underline--active"))}
        [:span "Visuals"]]]]
 
     ;; - CONTACT -

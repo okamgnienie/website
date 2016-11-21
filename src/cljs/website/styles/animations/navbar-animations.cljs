@@ -99,7 +99,32 @@
 
                      [:to {:left "125px"}])))
 
+;; --- - --- - --- VISUALS --- - --- - ---
+
+(def visuals-1
+  (css vendors
+       (at-keyframes "visuals-1"
+                     [:0% {:height "12.5%"}]
+                     [:33% {:height "25%"}]
+                     [:66% {:height "5%"}]
+                     [:100% {:height "12.5%"}])))
+
+(def visuals-2
+  (css vendors
+       (at-keyframes "visuals-2"
+                     [:0% {:height "12.5%"}]
+                     [:33% {:height "17%"}]
+                     [:66% {:height "9%"}]
+                     [:100% {:height "12.5%"}])))
+
+(def visuals-3
+  (css vendors
+       (at-keyframes "visuals-3"
+                     [:0% {:height "12.5%"}]
+                     [:50% {:height "30%"}]
+                     [:100% {:height "12.5%"}])))
+
 ;; --- - --- - --- ALL ANIMATIONS --- - --- - ---
 
 (def all
-  (str radio-waves navbar-rainbow hourglass-1 hourglass-2 home work))
+  (str radio-waves navbar-rainbow hourglass-1 hourglass-2 home work visuals-1 visuals-2 visuals-3))
