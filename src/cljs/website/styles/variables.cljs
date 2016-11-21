@@ -20,6 +20,15 @@
 
 (def yellow-1 "#F5FF00")
 
+(def orange-1 "#FF9C00")
+
+(def green-1 "#3CF10E")
+
+(def blue-1 "#0024FF")
+
+(def purple-1 "#C500FF")
+
+(def pink-1 "#FF009C")
 
 ;; --- - --- - --- FONTS --- - --- - ---
 
