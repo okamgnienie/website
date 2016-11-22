@@ -124,7 +124,50 @@
                      [:50% {:height "30%"}]
                      [:100% {:height "12.5%"}])))
 
+;; --- - --- - --- CONTACT --- - --- - ---
+
+;; For wide screen
+(def radio-wave-1
+  (css vendors
+       (at-keyframes "radio-wave-1"
+                     [:from {:top "24px"
+                             :left "423px"
+                             :opacity 0.5
+                             :width 0
+                             :height 0}]
+                     [:to {:top "-226px"
+                           :left "173px"
+                           :opacity 0
+                           :width "500px"
+                           :height "500px"}])))
+
+;; For narrow screen
+(def radio-wave-2
+  (css vendors
+       (at-keyframes "radio-wave-2"
+                     [:from {:top "24px"
+                             :left "433px"
+                             :opacity 0.5
+                             :width 0
+                             :height 0}]
+                     [:to {:top "-226px"
+                           :left "183px"
+                           :opacity 0
+                           :width "500px"
+                           :height "500px"}])))
+
 ;; --- - --- - --- ALL ANIMATIONS --- - --- - ---
 
 (def all
-  (str radio-waves navbar-rainbow hourglass-1 hourglass-2 home work visuals-1 visuals-2 visuals-3))
+  (str
+   radio-waves
+   navbar-rainbow
+   hourglass-1
+   hourglass-2
+   home
+   work
+   visuals-1
+   visuals-2
+   visuals-3
+   radio-wave-1
+   radio-wave-2))
