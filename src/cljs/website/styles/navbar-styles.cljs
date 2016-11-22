@@ -1,7 +1,16 @@
 (ns website.navbar-styles
   (:require [garden.core :refer [css]]
-            [garden.selectors :refer [defclass defselector ul li a hover after before]]
             [garden.stylesheet :refer [at-media]]
+
+            [garden.selectors :refer [defclass
+                                      defselector
+                                      ul
+                                      li
+                                      a
+                                      hover
+                                      after
+                                      before]]
+
             [website.variables :refer [white-1
                                        gray-1
                                        black-1
@@ -30,6 +39,7 @@
 (defclass navbar__item--work)
 (defclass navbar__item--hours)
 (defclass navbar__item--visuals)
+(defclass navbar__item--contact)
 
 ;; Titles
 (defclass navbar__title)
@@ -37,12 +47,14 @@
 (defclass navbar__title--work)
 (defclass navbar__title--hours)
 (defclass navbar__title--visuals)
+(defclass navbar__title--contact)
 
 ;; Magic
 (defclass navbar__magic)
 (defclass navbar__magic--work)
 (defclass navbar__magic--hours)
 (defclass navbar__magic--visuals)
+(defclass navbar__magic--contact)
 
 ;; States
 (defclass navbar__active)
@@ -67,11 +79,11 @@
 (defclass navbar__digital-line-cover--yellow-1)
 (defclass navbar__digital-line-cover--yellow-2)
 
-;; Hours button related
+;; Hours button specific
 (defclass navbar__time)
 (defclass navbar__time--active)
 
-;; Visuals button related
+;; Visuals button specific
 (defclass navbar__rainbow--red)
 (defclass navbar__rainbow--orange)
 (defclass navbar__rainbow--yellow)
@@ -80,6 +92,10 @@
 (defclass navbar__rainbow--blue)
 (defclass navbar__rainbow--purple)
 (defclass navbar__rainbow--pink)
+
+;; Contact button specific
+(defclass navbar__radio-wave)
+(defclass navbar__radio-wave--active)
 
 ;; Animations
 (defclass navbar__brain-waves)
@@ -305,4 +321,32 @@
 
    [(navbar__item--visuals hover)
     [navbar__title--visuals {:margin "0 3px 0 30px"
-                             :transition "margin 0.2s ease-in-out"}]]))
+                             :transition "margin 0.2s ease-in-out"}]]
+
+   ;; - - - CONTACT - - -
+
+   [navbar__item--contact {:position "initial"}]
+
+   [navbar__title--contact {:background-color "transparent"
+                            :width "120px"}]
+
+   [navbar__magic--contact {:position "initial"
+                            :height 0}]
+
+   [navbar__radio-wave {:pointer-events "none"
+                        :border-radius "50%"
+                        :width 0
+                        :height 0
+                        :position "absolute"
+                        :border "1px solid black"
+                        :opacity 0
+                        :z-index 1}]
+
+   [navbar__radio-wave--active {:animation "radio-wave-1 2.5s linear"}]
+
+   ;; Media query
+
+   (at-media {:max-width mobile-max}
+             [navbar__radio-wave--active {:animation "radio-wave-2 2.5s linear"}])
+
+))

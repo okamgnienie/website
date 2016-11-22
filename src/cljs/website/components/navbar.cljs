@@ -2,6 +2,9 @@
   (:require [garden.core :refer [css]]))
 
 (def time-interval (atom nil))
+(def radio-interval (atom nil))
+
+(def radio-on (atom false))
 
 (defn get-time-elem []
   (js/document.querySelector "div.navbar__time:not(.navbar__time--active)"))
@@ -30,6 +33,46 @@
 
 (defn stop-animating-time []
   (.clearInterval js/window @time-interval))
+
+;; - - - RADIO WAVE ANIMATION - - -
+
+(defn get-radio-wave-elem []
+  (js/document.querySelector ".navbar__radio-wave:not(.navbar__radio-wave--active)"))
+
+(defn animate-radio-wave []
+  (let [elem (get-radio-wave-elem)]
+    (when (some? elem)
+      (set! (.-className elem) "navbar__radio-wave navbar__radio-wave--active")
+      (animation-finished
+       elem
+       (fn []
+         (set! (.-className elem) "navbar__radio-wave"))))))
+
+(defn animate-radio-waves []
+  (if @radio-on
+    (animate-radio-wave))
+
+  (js/setTimeout (fn []
+                   (if @radio-on
+                     (animate-radio-wave))) 300)
+
+  (js/setTimeout (fn []
+                   (if @radio-on
+                     (animate-radio-wave))) 700))
+
+(defn start-animating-radio-waves []
+  (reset! radio-on true)
+  (animate-radio-waves)
+  (reset!
+   radio-interval
+   (js/setInterval
+    (fn []
+      (animate-radio-waves)) 3500)))
+
+(defn stop-animating-radio-waves []
+  (reset! radio-on false)
+  (.clearInterval js/window @radio-interval))
+
 
 
 (defn navbar [state-name]
@@ -113,6 +156,16 @@
 
     [:li {:class "navbar__item navbar__item--contact"}
      [:a {:href "/contact"}
-      ;; [:div {:class "navbar__magic"}]
-      [:div {:class (str "navbar__title navbar__animated-underline" (if (= @state-name "contact") " navbar__animated-underline--active"))}
+      [:div {:class "navbar__magic navbar__magic--contact"}
+       [:div {:class "navbar__radio-wave"}]
+       [:div {:class "navbar__radio-wave"}]
+       [:div {:class "navbar__radio-wave"}]
+       [:div {:class "navbar__radio-wave"}]
+       [:div {:class "navbar__radio-wave"}]
+       [:div {:class "navbar__radio-wave"}]
+       [:div {:class "navbar__radio-wave"}]
+       [:div {:class "navbar__radio-wave"}]]
+      [:div {:class (str "navbar__title navbar__title--contact navbar__animated-underline" (if (= @state-name "contact") " navbar__animated-underline--active"))
+             :on-mouse-enter #(start-animating-radio-waves)
+             :on-mouse-leave #(stop-animating-radio-waves)}
        [:span "Contact"]]]]]])
