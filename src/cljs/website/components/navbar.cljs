@@ -71,8 +71,8 @@
     ;; - HOURS -
 
     [:li {:class "navbar__item navbar__item--hours"
-          :on-mouse-over #(start-animating-time)
-          :on-mouse-out #(stop-animating-time)}
+          :on-mouse-enter #(start-animating-time)
+          :on-mouse-leave #(stop-animating-time)}
      [:a {:href "/hours"}
       [:div {:class "navbar__magic navbar__magic--hours"}
        [:div {:class "navbar__time"}]
