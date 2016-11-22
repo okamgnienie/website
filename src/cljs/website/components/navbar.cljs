@@ -90,7 +90,7 @@
        [:div {:class "navbar__time"}]
        [:div {:class "navbar__time"}]
        [:div {:class "navbar__time"}]]
-      [:div {:class (str "navbar__title navbar__animated-underline" (if (= @state-name "hours") " navbar__animated-underline--active"))}
+      [:div {:class (str "navbar__title navbar__title--hours navbar__animated-underline" (if (= @state-name "hours") " navbar__animated-underline--active"))}
        [:span "Hours"]]]]
 
     ;; - VISUALS -

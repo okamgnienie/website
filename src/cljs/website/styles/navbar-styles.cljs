@@ -35,6 +35,7 @@
 (defclass navbar__title)
 (defclass navbar__title--home)
 (defclass navbar__title--work)
+(defclass navbar__title--hours)
 (defclass navbar__title--visuals)
 
 ;; Magic
@@ -233,6 +234,7 @@
                          :width "40px"}]
 
    [navbar__title--work {:position "relative"
+                         :width "88px"
                          :z-index 1}]
 
    [navbar__item--work {:transition "padding 0.2s ease-in-out"
@@ -259,6 +261,8 @@
 
    [navbar__magic--hours {:position "initial"
                           :height 0}]
+
+   [navbar__title--hours {:width "96px"}]
 
    ;; Media query
 
