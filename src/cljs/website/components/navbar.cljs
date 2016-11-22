@@ -21,11 +21,12 @@
    (js/setInterval
     (fn []
       (let [next-elem (get-time-elem)]
-        (set! (.-className next-elem) "navbar__time navbar__time--active")
-        (animation-finished
-         next-elem
-         (fn []
-           (set! (.-className next-elem) "navbar__time"))))) 120)))
+        (when (some? next-elem)
+          (set! (.-className next-elem) "navbar__time navbar__time--active")
+          (animation-finished
+           next-elem
+           (fn []
+             (set! (.-className next-elem) "navbar__time")))))) 120)))
 
 (defn stop-animating-time []
   (.clearInterval js/window @time-interval))
