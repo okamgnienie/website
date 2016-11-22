@@ -1,7 +1,7 @@
 (ns website.navbar
   (:require [garden.core :refer [css]]))
 
-(def interval (atom nil))
+(def time-interval (atom nil))
 
 (defn get-time-elem []
   (js/document.querySelector "div.navbar__time:not(.navbar__time--active)"))
@@ -13,9 +13,11 @@
   (.addEventListener elem "oanimationend" handler)
   (.addEventListener elem "animationend" handler))
 
+;; - - - TIME ANIMATION - - -
+
 (defn start-animating-time []
   (reset!
-   interval
+   time-interval
    (js/setInterval
     (fn []
       (let [next-elem (get-time-elem)]
@@ -26,7 +28,7 @@
            (set! (.-className next-elem) "navbar__time"))))) 120)))
 
 (defn stop-animating-time []
-  (.clearInterval js/window @interval))
+  (.clearInterval js/window @time-interval))
 
 
 (defn navbar [state-name]
