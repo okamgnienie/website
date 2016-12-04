@@ -15,8 +15,9 @@
 
   :clean-targets ^{:protect false}
   [:target-path
-   [:cljsbuild :builds :app :compiler :output-dir]
-   [:cljsbuild :builds :app :compiler :output-to]]
+   [:cljsbuild :builds :dev :compiler :output-dir]
+   [:cljsbuild :builds :dev :compiler :output-to]
+   "public/css/styles.css"]
 
   :resource-paths ["public"]
 
