@@ -1,57 +1,94 @@
 (ns website.core
-    (:require [reagent.core :as reagent :refer [atom]]
-              [reagent.session :as session]
-              [reagent.core :as r]
+  (:require-macros [secretary.core :refer [defroute]])
+  (:import goog.History)
+  (:require [secretary.core :as secretary]
+            [goog.events :as events]
+            [goog.history.EventType :as EventType]
+            [reagent.core :as reagent]
 
-              [website.home :refer [home]]
-              [website.work :refer [work]]
-              [website.hours :refer [hours]]
-              [website.visuals :refer [visuals]]
-              [website.contact :refer [contact]]
+            [website.home :refer [home]]
+            [website.work :refer [work]]
+            [website.hours :refer [hours]]
+            [website.visuals :refer [visuals]]
+            [website.contact :refer [contact]]
 
-              [website.styles :refer [style]]
-              [website.navbar :refer [navbar]]
-              [website.footer :refer [footer]]
+            [website.navbar :refer [navbar]]
+            [website.footer :refer [footer]]))
 
-              [secretary.core :as secretary :include-macros true]
-              [accountant.core :as accountant]))
-
-(def state-name (r/atom "home"))
 
 ;; -------------------------
-;; Views
+;; Application state atom
 
-(defn current-page []
-  [:div
-   [:link {:rel "stylesheet" :href "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"}]
-   [:link {:rel "stylesheet" :href "https://fonts.googleapis.com/css?family=Roboto:300,400"}]
-   (style)
-   [navbar state-name]
-   [(session/get :current-page)]
-   [footer]])
+(def app-state (reagent/atom {}))
+
+;; -------------------------
+;; Browser history
+
+(defn hook-browser-navigation! []
+  (doto (History.)
+    (events/listen
+     EventType/NAVIGATE
+     (fn [event]
+       (secretary/dispatch! (.-token event))))
+    (.setEnabled true)))
+
+;; -------------------------
+;; Initialize application routes
+
+(defn app-routes []
+  (secretary/set-config! :prefix "#")
+
+  (defroute "/" []
+    (swap! app-state assoc :name "home")
+    (swap! app-state assoc :page :home))
+
+  (defroute "/work" []
+    (swap! app-state assoc :name "work")
+    (swap! app-state assoc :page :work))
+
+  (defroute "/hours" []
+    (swap! app-state assoc :name "hours")
+    (swap! app-state assoc :page :hours))
+
+  (defroute "/visuals" []
+    (swap! app-state assoc :name "visuals")
+    (swap! app-state assoc :page :visuals))
+
+  (defroute "/contact" []
+    (swap! app-state assoc :name "contact")
+    (swap! app-state assoc :page :contact))
+
+  (hook-browser-navigation!))
 
 ;; -------------------------
 ;; Routes
 
-(secretary/defroute "/" []
-  ((session/put! :current-page #'home)
-   (reset! state-name "home")))
-
-(secretary/defroute "/work" []
-  ((session/put! :current-page #'work)
-   (reset! state-name "work")))
-
-(secretary/defroute "/hours" []
-  ((session/put! :current-page #'hours)
-   (reset! state-name "hours")))
-
-(secretary/defroute "/visuals" []
-  ((session/put! :current-page #'visuals)
-   (reset! state-name "visuals")))
-
-(secretary/defroute "/contact" []
-  ((session/put! :current-page #'contact)
-   (reset! state-name "contact")))
+(defmulti current-page #(@app-state :page))
+(defmethod current-page :home []
+  [:div
+   [navbar #(@app-state :name)]
+   [home]
+   [footer]])
+(defmethod current-page :work []
+  [:div
+   [navbar #(@app-state :name)]
+   [work]
+   [footer]])
+(defmethod current-page :hours []
+  [:div
+   [navbar #(@app-state :name)]
+   [hours]
+   [footer]])
+(defmethod current-page :visuals []
+  [:div
+   [navbar #(@app-state :name)]
+   [visuals]
+   [footer]])
+(defmethod current-page :contact []
+  [:div
+   [navbar #(@app-state :name)]
+   [contact]
+   [footer]])
 
 ;; -------------------------
 ;; Initialize app
@@ -59,13 +96,6 @@
 (defn mount-root []
   (reagent/render [current-page] (.getElementById js/document "app")))
 
-(defn init! []
-  (accountant/configure-navigation!
-    {:nav-handler
-     (fn [path]
-       (secretary/dispatch! path))
-     :path-exists?
-     (fn [path]
-       (secretary/locate-route path))})
-  (accountant/dispatch-current!)
+(defn ^:export init []
+  (app-routes)
   (mount-root))
