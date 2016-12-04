@@ -7,8 +7,8 @@
                  [reagent "0.6.0"]
                  [secretary "1.2.3"]]
 
-  :plugins [[lein-cljsbuild "1.1.3"]
-            [lein-figwheel "0.5.4-5"]
+  :plugins [[lein-cljsbuild "1.1.4"]
+            [lein-figwheel "0.5.8"]
             [lein-garden "0.3.0"]]
 
   :min-lein-version "2.5.0"
@@ -52,6 +52,6 @@
                                    :optimizations :advanced
                                    :pretty-print false}}}}
 
-  :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.4-5"]
+  :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.8"]
                                   [org.clojure/tools.nrepl "0.2.12"]
-                                  [com.cemerick/piggieback "0.2.2-SNAPSHOT"]]}})
+                                  [com.cemerick/piggieback "0.2.1"]]}})
