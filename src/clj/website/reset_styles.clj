@@ -48,4 +48,6 @@
 
   [:html {:box-sizing "border-box"}]
 
-  [:* (* before) (* after) {:box-sizing "inherit"}])
+  [:* (* before) (* after) {:box-sizing "inherit"}]
+
+  [:* {:outline "none"}])
