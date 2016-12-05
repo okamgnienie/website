@@ -11,6 +11,7 @@
 
 (def gray-1 "#f0f0f0")
 (def gray-2 "#f9f9f9")
+(def gray-3 "#444")
 
 (def black-1 "#111")
 
@@ -29,6 +30,13 @@
 (def purple-1 "#C500FF")
 
 (def pink-1 "#FF009C")
+
+;; --- - --- - --- BRANDS --- - --- - ---
+
+(def linkedin-color "#0077b5")
+(def facebook-color "#3b5999")
+(def github-color "#4078c0")
+(def twitter-color "#00aced")
 
 ;; --- - --- - --- FONTS --- - --- - ---
 
