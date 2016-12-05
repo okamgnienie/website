@@ -1,8 +1,12 @@
 (ns website.main-styles
   (:require [garden.def :refer [defstyles]]
-            [garden.selectors :refer [defclass p]]
+            [garden.selectors :refer [defclass p defid attr after]]
             [garden.stylesheet :refer [at-media]]
             [website.variables :refer [gray-1 white-1 main-font desktop-min]]))
+
+(defid app)
+
+(defclass view)
 
 (defclass container)
 (defclass container-fluid)
@@ -10,15 +14,14 @@
 (defclass article)
 (defclass article__separator)
 
-(defclass view)
-
 (defstyles styles
-  [:html {:background-color gray-1
-          :font-family main-font
-          :min-height "100%"}]
 
-  [:body {:background-color white-1
-          :min-height "100%"}]
+  [:html :body app (attr :data-reactroot) {:height "100%"}]
+
+  [:html {:background-color gray-1
+          :font-family main-font}]
+
+  [:body {:background-color white-1}]
 
   [:strong {:font-weight "bold"}]
 
@@ -28,7 +31,16 @@
                        :font-size "20px"}]
 
   [view {:margin "0 auto"
-         :padding-top "50px"}]
+         :padding-top "50px"
+         :min-height "100%"
+         :margin-bottom "-80px"
+         :padding-bottom "80px"
+         :background-color white-1}]
+
+  ;; For sticky footer
+  [(after view) {:display "block"
+                 :content ""
+                 :height "80px"}] ; footer height
 
   [article {:padding "10px 10px 20px 10px"
             :text-align "justify"}]
