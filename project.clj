@@ -5,7 +5,8 @@
   :dependencies [[org.clojure/clojure "1.8.0" :scope "provided"]
                  [org.clojure/clojurescript "1.9.229" :scope "provided"]
                  [reagent "0.6.0"]
-                 [secretary "1.2.3"]]
+                 [secretary "1.2.3"]
+                 [cljs-ajax "0.5.8"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-figwheel "0.5.8"]

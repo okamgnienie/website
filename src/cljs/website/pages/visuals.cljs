@@ -1,6 +1,7 @@
 (ns website.visuals
   (:require [reagent.core :as r]
-            [clojure.string :refer [blank?]]))
+            [clojure.string :refer [blank?]]
+            [website.visuals-service :refer [get-visuals]]))
 
 ;; -------------------------
 ;; Model
@@ -8,6 +9,8 @@
 (def filter-query (r/atom ""))
 
 (def visuals-data (r/atom []))
+
+(get-visuals visuals-data)
 
 ;; -------------------------
 ;; Component to build images
