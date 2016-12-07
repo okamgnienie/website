@@ -8,8 +8,7 @@
                                       li
                                       a
                                       hover
-                                      after
-                                      before]]
+                                      after]]
 
             [website.variables :refer [white-1
                                        gray-1
