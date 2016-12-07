@@ -12,14 +12,18 @@
 (def gray-1 "#f0f0f0")
 (def gray-2 "#f9f9f9")
 (def gray-3 "#444")
+(def gray-4 "#333")
+(def gray-5 "#888")
 
 (def black-1 "#111")
 
 (def cyan-1 "#01FFE5")
 
 (def red-1 "#FF0000")
+(def red-2 "#ff4a4a")
 
 (def yellow-1 "#F5FF00")
+(def yellow-2 "#FFC107")
 
 (def orange-1 "#FF9C00")
 

@@ -4,6 +4,7 @@
             [website.navbar-styles :as navbar]
             [website.main-styles :as main]
             [website.footer-styles :as footer]
+            [website.visuals-styles :as visuals]
             [website.contact-styles :as contact]
             [website.rainbow-text :refer [rainbow-text]]))
 
@@ -13,5 +14,6 @@
    navbar/styles
    main/styles
    footer/styles
+   visuals/styles
    contact/styles
    rainbow-text])
