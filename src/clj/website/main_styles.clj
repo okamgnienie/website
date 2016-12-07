@@ -14,7 +14,16 @@
 (defclass article)
 (defclass article__separator)
 
+(defclass noselect)
+
 (defstyles styles
+
+  [noselect {:-webkit-touch-callout "none"
+             :-webkit-user-select "none"
+             :-khtml-user-select "none"
+             :-moz-user-select "none"
+             :-ms-user-select "none"
+             :user-select "none"}]
 
   [:html :body app (attr :data-reactroot) {:height "100%"}]
 
