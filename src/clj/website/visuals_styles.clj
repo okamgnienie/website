@@ -36,6 +36,7 @@
 
 (defclass visual__title)
 (defclass visual__tag)
+(defclass visual__tag--active)
 
 (defclass visual__link)
 (defclass visual__img)
@@ -122,7 +123,8 @@
                 :transition "color 0.3s ease"
                 :cursor "pointer"}]
 
-  [(visual__tag hover) {:color yellow-2}]
+  [visual__tag--active (visual__tag hover) {:color yellow-2}]
+
 
   [(visual__tag before) {:content "'•'"
                          :margin-right "8px"
