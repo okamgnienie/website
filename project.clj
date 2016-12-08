@@ -22,7 +22,7 @@
 
   :resource-paths ["public"]
 
-  :figwheel {:http-server-root "public"
+  :figwheel {:http-server-root "." ; public/ in the root directory
              :nrepl-port 7002
              :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"]
              :css-dirs ["public/css"]}
@@ -40,6 +40,7 @@
 
   :cljsbuild {:builds {:dev
                        {:source-paths ["src/cljs" "env/dev/cljs"]
+                        :figwheel {:open-urls ["http://localhost:3449"]}
                         :compiler {:main "website.dev"
                                    :output-to "public/js/app.js"
                                    :output-dir "public/js/out"
