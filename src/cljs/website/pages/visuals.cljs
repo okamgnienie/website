@@ -3,8 +3,8 @@
             [clojure.string :refer [blank?]]
             [website.visuals-service :refer [get-visuals]]))
 
-;; -------------------------
-;; Model
+;; ----------
+;; View model
 
 (def filter-query (r/atom ""))
 
@@ -20,19 +20,32 @@
        :style {:background-color (data :background)}}
    [:img {:class "visual__img":src (data :image)}]])
 
-;; -------------------------
+;; ----------------------------------
+;; Component to build embedded videos
+
+(defn embedded-video [code]
+  [:div {:class "visual__embedded-video"
+         :dangerouslySetInnerHTML {:__html code}}])
+
+;; -----------------------
 ;; Single visual component
 
 (defn visual [data]
   [:div {:class (str "visual visual--" (data :type))}
-   [image data]
+
+   (if (= (data :type) "image")
+     [image data])
+
+   (if (= (data :type) "embedded-video")
+     [embedded-video (data :code)])
+
    [:div {:class "visual__title"} (data :title)
     (for [tag (data :tags)]
       ^{:key tag} [:span {:class "visual__tag noselect"
                           :on-click  #(reset! filter-query tag)} tag])]])
 
-;; -------------------------
-;; View
+;; ----------------------
+;; Visuals page main view
 
 (defn visuals []
   [:div {:class "view view--visuals"}

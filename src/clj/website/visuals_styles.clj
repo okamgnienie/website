@@ -3,10 +3,11 @@
 
             [garden.selectors :refer [defclass
                                       hover
-                                      defclass
                                       input
                                       span
-                                      before]]
+                                      before
+                                      iframe
+                                      >]]
 
             [website.variables :refer [white-1
                                        gray-2
@@ -16,30 +17,43 @@
                                        red-2
                                        yellow-2]]))
 
-(defclass options)
+;; --------------
+;; Custom classes
 
 (defclass view--visuals)
-
 (defclass visuals-gallery)
+
+;; Searching/Filtering component
+(defclass options)
 
 (defclass filter)
 (defclass filter__input)
 (defclass filter__clear-btn)
 (defclass filter__clear-btn--visible)
 
-
+;; Visual component
 (defclass visual)
-(defclass visual--image)
-
-(defclass visual__link)
-(defclass visual__img)
 
 (defclass visual__title)
 (defclass visual__tag)
 
+(defclass visual__link)
+(defclass visual__img)
+
+(defclass visual__embedded-video)
+
+;; ------
+;; Styles
+
 (defstyles styles
 
+  ;; -------------------
+  ;; General view styles
+
   [view--visuals {:background-color gray-3}]
+
+  ;; ------------------------------------
+  ;; Searching/Filtering compinent styles
 
   [options {:background-color gray-4}]
 
@@ -77,6 +91,15 @@
 
   [filter__clear-btn--visible {:width 0}]
 
+  ;; ------------------------------
+  ;; General visuals gallery styles
+
+  [visuals-gallery
+   {:margin-top "50px"}]
+
+  ;; -----------------------
+  ;; Visual component styles
+
   [visual {:width "100%"
            :margin-bottom "50px"
            :background-color gray-4
@@ -105,5 +128,12 @@
                          :margin-right "8px"
                          :color gray-5}]
 
-  [visuals-gallery
-   {:margin-top "50px"}])
+  [visual__embedded-video {:position "relative"
+                           :padding-bottom "56.25%" ; 16:9 ratio
+                           :height 0}]
+
+  [(> visual__embedded-video iframe) {:position "absolute"
+                                      :top 0
+                                      :left 0
+                                      :width "100%"
+                                      :height "100%"}])
