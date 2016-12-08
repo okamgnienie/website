@@ -43,6 +43,9 @@
 
 (defclass visual__embedded-video)
 
+(defclass visuals-pagination)
+(defclass visuals-pagination__arrow)
+
 ;; ------
 ;; Styles
 
@@ -138,4 +141,13 @@
                                       :top 0
                                       :left 0
                                       :width "100%"
-                                      :height "100%"}])
+                                      :height "100%"}]
+
+  [visuals-pagination {:text-align "center"
+                       :margin-bottom "50px"
+                       :color gray-2
+                       :font-weight 300}]
+
+  [visuals-pagination__arrow {:cursor "pointer"
+                              :display "inline-block"
+                              :width "60px"}])
