@@ -11,6 +11,8 @@ pom.xml.asc
 /public/css
 /public/js
 /public/data
+/public/images/hours
+/public/images/visuals
 /out
 /.repl
 *.log
