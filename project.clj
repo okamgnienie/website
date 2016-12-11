@@ -23,8 +23,6 @@
   :resource-paths ["public"]
 
   :figwheel {:http-server-root "." ; public/ in the root directory
-             :nrepl-port 7002
-             :nrepl-middleware ["cemerick.piggieback/wrap-cljs-repl"]
              :css-dirs ["public/css"]}
 
   :garden {:builds [{:id "dev"
@@ -39,9 +37,10 @@
                                 :pretty-print? false}}]}
 
   :cljsbuild {:builds {:dev
-                       {:source-paths ["src/cljs" "env/dev/cljs"]
-                        :figwheel {:open-urls ["http://localhost:3449"]}
-                        :compiler {:main "website.dev"
+                       {:source-paths ["src/cljs"]
+                        :figwheel {:open-urls ["http://localhost:3449"]
+                                   :on-jsload website.core/mount-root}
+                        :compiler {:main website.core
                                    :output-to "public/js/app.js"
                                    :output-dir "public/js/out"
                                    :asset-path "/js/out"
@@ -55,5 +54,4 @@
                                    :pretty-print false}}}}
 
   :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.8"]
-                                  [org.clojure/tools.nrepl "0.2.12"]
-                                  [com.cemerick/piggieback "0.2.1"]]}})
+                                  [binaryage/devtools "0.8.2"]]}})

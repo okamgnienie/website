@@ -4,7 +4,7 @@
   (:require [secretary.core :as secretary]
             [goog.events :as events]
             [goog.history.EventType :as EventType]
-            [reagent.core :as reagent]
+            [reagent.core :as r]
 
             [website.home :refer [home]]
             [website.work :refer [work]]
@@ -19,7 +19,7 @@
 ;; -------------------------
 ;; Application state atom
 
-(def app-state (reagent/atom {}))
+(def app-state (r/atom {}))
 
 ;; -------------------------
 ;; Browser history
@@ -89,12 +89,14 @@
    [navbar #(@app-state :name)]
    [contact]
    [footer]])
+(defmethod current-page :default []
+  [:div "Error 404!"])
 
 ;; -------------------------
 ;; Initialize app
 
 (defn mount-root []
-  (reagent/render [current-page] (.getElementById js/document "app")))
+  (r/render [current-page] (.getElementById js/document "app")))
 
 (defn ^:export init []
   (app-routes)
