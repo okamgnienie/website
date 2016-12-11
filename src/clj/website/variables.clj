@@ -2,8 +2,7 @@
 
 ;; --- - --- - --- PREFIXES --- - --- - ---
 
-(def vendors
-  {:vendors ["moz" "webkit" "o"]})
+(def vendors ["moz" "webkit" "o"])
 
 ;; --- - --- - --- COLORS --- - --- - ---
 

@@ -29,11 +29,13 @@
                      :source-paths ["src/clj"]
                      :stylesheet website.css/styles
                      :compiler {:output-to "public/css/styles.css"
+                                :vendors website.variables/vendors
                                 :pretty-print? true}}
                     {:id "production"
                      :source-paths ["src/clj"]
                      :stylesheet website.css/styles
                      :compiler {:output-to "public/css/styles.css"
+                                :vendors website.variables/vendors
                                 :pretty-print? false}}]}
 
   :cljsbuild {:builds {:dev
