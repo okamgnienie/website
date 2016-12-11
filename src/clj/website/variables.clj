@@ -49,3 +49,8 @@
 
 (def mobile-max "960px")
 (def desktop-min "961px")
+
+(def hours-grid-1 "300px")
+(def hours-grid-2 "400px")
+(def hours-grid-3 "600px")
+(def hours-grid-4 desktop-min)

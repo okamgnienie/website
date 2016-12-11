@@ -6,6 +6,7 @@
             [website.footer-styles :as footer]
             [website.visuals-styles :as visuals]
             [website.contact-styles :as contact]
+            [website.hours-styles :as hours]
             [website.rainbow-text :refer [rainbow-text]]))
 
 (def styles
@@ -16,4 +17,5 @@
    footer/styles
    visuals/styles
    contact/styles
+   hours/styles
    rainbow-text])
