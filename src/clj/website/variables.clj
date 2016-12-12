@@ -13,6 +13,7 @@
 (def gray-3 "#444")
 (def gray-4 "#333")
 (def gray-5 "#888")
+(def gray-6 "#bbb")
 
 (def black-1 "#111")
 

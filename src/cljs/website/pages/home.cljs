@@ -1,8 +1,9 @@
 (ns website.home)
 
 (defn home []
-  [:div {:class "view"}
-   [:div {:class "view__landing container-fluid"} "Landing animation"]
+  [:div {:class "view view--home"}
+   [:div {:class "container-fluid landing"}
+    [:div {:class "landing__text"} "I'm just a placeholder."]]
    [:div {:class "container article"}
 
     [:p "My name is " [:strong "Przemyslaw Hardyn"] " and I was born in " [:strong "Cracow"] "," [:strong " Poland"] ". What you can see here is my kingdom, where I was free of limits, specifications and time schedules, to create what I truly believe describes me."]

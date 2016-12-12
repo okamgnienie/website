@@ -5,8 +5,9 @@
             [website.main-styles :as main]
             [website.footer-styles :as footer]
             [website.visuals-styles :as visuals]
-            [website.contact-styles :as contact]
+            [website.home-styles :as home]
             [website.hours-styles :as hours]
+            [website.contact-styles :as contact]
             [website.rainbow-text :refer [rainbow-text]]))
 
 (def styles
@@ -15,7 +16,8 @@
    navbar/styles
    main/styles
    footer/styles
+   home/styles
    visuals/styles
-   contact/styles
    hours/styles
+   contact/styles
    rainbow-text])
