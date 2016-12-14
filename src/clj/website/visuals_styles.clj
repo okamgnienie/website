@@ -45,6 +45,7 @@
 
 (defclass visuals-pagination)
 (defclass visuals-pagination__arrow)
+(defclass visuals-pagination__arrow--disabled)
 
 ;; ------
 ;; Styles
@@ -150,4 +151,9 @@
 
   [visuals-pagination__arrow {:cursor "pointer"
                               :display "inline-block"
-                              :width "60px"}])
+                              :width "60px"}]
+
+  [visuals-pagination__arrow--disabled {:color "transparent"
+                                        :cursor "default"}]
+
+  )

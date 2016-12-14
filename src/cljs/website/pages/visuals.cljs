@@ -24,25 +24,22 @@
 (defn filter-visuals [query]
   (reset! filter-query query)
 
-  (reset! filtered-visuals-data
-          (if (blank? @filter-query)
-            @visuals-data
-            (doall (filter
-                    (fn [x]
-                      (some #{@filter-query} (x :tags))) @visuals-data)))))
+  (reset! page 0)
 
+  (reset! filtered-visuals-data
+          (vec (doall (filter
+                       (fn [x]
+                         (some #{@filter-query} (x :tags))) @visuals-data)))))
 
 (defn limit-results [results]
   (js/scroll 0 0)
 
-  (reset! max-page 2)
+  (reset! max-page
+          (int (Math/floor
+                (/ (count results) 5))))
 
   (if (> (count results) 5)
-    (subvec results
-            (+ 1 (* @page 5))
-            (if (< (+ 6 (* @page 5)) (count results))
-              (+ 6 (* @page 5))
-              (count results)))
+    (take 5 (subvec results (* @page 5)))
     results))
 
 ;; -------------------------
@@ -84,15 +81,19 @@
 
 (defn manage-page []
   [:div {:class "visuals-pagination noselect"}
-   [:span {:class "visuals-pagination__arrow"
-           :style {:color (if (< @page 1) "transparent")}
-           :on-click #(if (> @page 0) (reset! page (dec @page)))} "<-- "]
+   [:span {:class (str "visuals-pagination__arrow "
+                       (if (< @page 1)
+                         "visuals-pagination__arrow--disabled"))
+           :on-click #(if (> @page 0) (reset! page (dec @page)))}
+    [:i {:class "fa fa-long-arrow-left" :aria-hidden "true"}]]
 
    [:span {:class "visuals-pagination__current"} (+ @page 1)]
 
-   [:span {:class "visuals-pagination__arrow"
-           :style {:color (if (= @page @max-page) "transparent")}
-           :on-click #(if (< @page @max-page) (reset! page (inc @page)))} " -->"]])
+   [:span {:class (str "visuals-pagination__arrow "
+                       (if (= @page @max-page)
+                         "visuals-pagination__arrow--disabled"))
+           :on-click #(if (< @page @max-page) (reset! page (inc @page)))}
+    [:i {:class "fa fa-long-arrow-right" :aria-hidden "true"}]]])
 
 ;; ----------------------
 ;; Visuals page main view
