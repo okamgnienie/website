@@ -13,6 +13,8 @@
 ;; --------------
 ;; Custom classes
 
+(defclass view--hours)
+
 (defclass hours-gallery)
 (defclass hours-gallery__item)
 
@@ -21,21 +23,28 @@
 
 (defstyles styles
 
-  [hours-gallery {:column-count 5
-                  :column-gap "0px" }]
+  ;; --------------
+  ;; View container
 
-  (at-media {:max-width hours-grid-4}
-            [hours-gallery {:column-count 4}])
+  [view--hours
 
-  (at-media {:max-width hours-grid-3}
-            [hours-gallery {:column-count 3}])
+   [hours-gallery {:column-count 5
+                   :column-gap "0px" }]
 
-  (at-media {:max-width hours-grid-2}
-            [hours-gallery {:column-count 2}])
+   (at-media {:max-width hours-grid-4}
+             [hours-gallery {:column-count 4}])
 
-  (at-media {:max-width hours-grid-1}
-            [hours-gallery {:column-count 1}])
+   (at-media {:max-width hours-grid-3}
+             [hours-gallery {:column-count 3}])
 
-  [hours-gallery__item {:display "block"
-                        :width "100% !important"
-                        :height "auto !important"}])
+   (at-media {:max-width hours-grid-2}
+             [hours-gallery {:column-count 2}])
+
+   (at-media {:max-width hours-grid-1}
+             [hours-gallery {:column-count 1}])
+
+   [hours-gallery__item {:display "block"
+                         :width "100% !important"
+                         :height "auto !important"}]
+
+   ])

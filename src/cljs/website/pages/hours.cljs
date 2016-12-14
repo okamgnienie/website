@@ -1,7 +1,7 @@
 (ns website.hours)
 
 (defn hours []
-  [:div {:class "view"}
+  [:div {:class "view view--hours"}
    [:div {:class "container"}
     [:div {:class "hours-gallery"}
 

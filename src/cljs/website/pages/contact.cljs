@@ -1,7 +1,7 @@
 (ns website.contact)
 
 (defn contact []
-  [:div {:class "view"}
+  [:div {:class "view view--contact"}
    [:div {:class "container"}
     [:div {:class "contacts"}
 

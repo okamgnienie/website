@@ -15,7 +15,9 @@
 
 (defstyles styles
 
-  ;; Main view container
+  ;; --------------
+  ;; View container
+
   [view--home
 
    [landing {:background-color gray-2
