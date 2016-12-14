@@ -1,7 +1,7 @@
 (ns website.footer)
 
-(defn footer []
-  [:footer {:class "footer container-fluid"}
+(defn footer [theme]
+  [:footer {:class (str "footer container-fluid footer--" theme)}
    [:div {:class "container"}
     [:div {:class "footer__credits"} "Przemyslaw Hardyn • 2016 • Geneva"]
     [:div {:class "footer__contact-icons"}

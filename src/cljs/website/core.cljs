@@ -68,27 +68,27 @@
   [:div
    [navbar #(@app-state :name)]
    [home]
-   [footer]])
+   [footer "bright"]])
 (defmethod current-page :work []
   [:div
    [navbar #(@app-state :name)]
    [work]
-   [footer]])
+   [footer "bright"]])
 (defmethod current-page :hours []
   [:div
    [navbar #(@app-state :name)]
    [hours]
-   [footer]])
+   [footer "bright"]])
 (defmethod current-page :visuals []
   [:div
    [navbar #(@app-state :name)]
    [visuals]
-   [footer]])
+   [footer "dark"]])
 (defmethod current-page :contact []
   [:div
    [navbar #(@app-state :name)]
    [contact]
-   [footer]])
+   [footer "bright"]])
 (defmethod current-page :default []
   [:div "Error 404!"])
 
