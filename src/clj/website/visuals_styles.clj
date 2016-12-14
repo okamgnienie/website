@@ -15,7 +15,9 @@
                                        gray-4
                                        gray-5
                                        red-2
-                                       yellow-2]]))
+                                       yellow-2
+                                       green-2
+                                       orange-1]]))
 
 ;; --------------
 ;; Custom classes
@@ -45,6 +47,8 @@
 
 (defclass visuals-pagination)
 (defclass visuals-pagination__arrow)
+(defclass visuals-pagination__arrow--left)
+(defclass visuals-pagination__arrow--right)
 (defclass visuals-pagination__arrow--disabled)
 
 ;; ------
@@ -152,6 +156,10 @@
    [visuals-pagination__arrow {:cursor "pointer"
                                :display "inline-block"
                                :width "60px"}]
+
+   [visuals-pagination__arrow--left {:color orange-1}]
+
+   [visuals-pagination__arrow--right {:color green-2}]
 
    [visuals-pagination__arrow--disabled {:color "transparent"
                                          :cursor "default"}]

@@ -28,6 +28,7 @@
 (def orange-1 "#FF9C00")
 
 (def green-1 "#3CF10E")
+(def green-2 "#8BC34A")
 
 (def blue-1 "#0024FF")
 

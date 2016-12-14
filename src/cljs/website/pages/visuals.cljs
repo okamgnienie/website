@@ -81,7 +81,7 @@
 
 (defn manage-page []
   [:div {:class "visuals-pagination noselect"}
-   [:span {:class (str "visuals-pagination__arrow "
+   [:span {:class (str "visuals-pagination__arrow visuals-pagination__arrow--left "
                        (if (< @page 1)
                          "visuals-pagination__arrow--disabled"))
            :on-click #(if (> @page 0) (reset! page (dec @page)))}
@@ -89,7 +89,7 @@
 
    [:span {:class "visuals-pagination__current"} (+ @page 1)]
 
-   [:span {:class (str "visuals-pagination__arrow "
+   [:span {:class (str "visuals-pagination__arrow visuals-pagination__arrow--right "
                        (if (= @page @max-page)
                          "visuals-pagination__arrow--disabled"))
            :on-click #(if (< @page @max-page) (reset! page (inc @page)))}
