@@ -38,7 +38,7 @@
          :padding-top "50px"
          :min-height "100%"
          :margin-bottom "-80px"
-         :padding-bottom "80px"
+         :padding-bottom "130px" ; includes 50px padding for content separation
          :background-color white-1}]
 
   ;; For sticky footer
