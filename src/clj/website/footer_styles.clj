@@ -2,7 +2,7 @@
   (:require [garden.def :refer [defstyles]]
             [garden.selectors :refer [defclass]]
             [garden.stylesheet :refer [at-media]]
-            [website.variables :refer [mobile-max black-1 gray-2]]))
+            [website.variables :refer [desktop-min black-1 gray-2]]))
 
 ;; Main
 (defclass footer)
@@ -25,7 +25,7 @@
 
   [footer__contact-icons {:float "right"}]
 
-  (at-media {:max-width mobile-max}
+  (at-media {:max-width desktop-min}
 
             [footer__contact-icons {:float "left"
                                     :clear "left"}]

@@ -17,7 +17,7 @@
                                        cyan-1
                                        red-1
                                        yellow-1
-                                       mobile-max
+                                       desktop-min
                                        red-1
                                        orange-1
                                        yellow-1
@@ -190,7 +190,7 @@
 
   ;; Media query
 
-  (at-media {:max-width mobile-max}
+  (at-media {:max-width desktop-min}
             [navbar__title--home {:padding-left "10px"
                                   :width "81px"}])
 
@@ -280,7 +280,7 @@
 
   ;; Media query
 
-  (at-media {:max-width mobile-max}
+  (at-media {:max-width desktop-min}
             [navbar__time--active {:animation "hourglass-2 1.2s linear"}])
 
   ;; - - - VISUALS - - -
@@ -344,5 +344,5 @@
 
   ;; Media query
 
-  (at-media {:max-width mobile-max}
+  (at-media {:max-width desktop-min}
             [navbar__radio-wave--active {:animation "radio-wave-2 2.5s linear"}]))

@@ -48,8 +48,7 @@
 
 ;; --- - --- - --- MEDIA QUERIES --- - --- - ---
 
-(def mobile-max "960px")
-(def desktop-min "961px")
+(def desktop-min "960px")
 
 (def hours-grid-1 "300px")
 (def hours-grid-2 "400px")
