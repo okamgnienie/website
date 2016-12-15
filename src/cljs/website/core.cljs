@@ -5,6 +5,7 @@
             [goog.events :as events]
             [goog.history.EventType :as EventType]
             [reagent.core :as r]
+            [clojure.string :refer [blank? split]]
 
             [website.home :refer [home]]
             [website.work :refer [work]]
@@ -95,7 +96,16 @@
 ;; -------------------------
 ;; Initialize app
 
+(defn get-view-name []
+  (let [hash (aget js/location "hash")]
+    (if (blank? hash)
+      "home"
+      (second (split hash #"/")))))
+
 (defn mount-root []
+  (reset! app-state {:name (get-view-name)
+                     :page (keyword (get-view-name))})
+
   (r/render [current-page] (.getElementById js/document "app")))
 
 (defn ^:export init []
