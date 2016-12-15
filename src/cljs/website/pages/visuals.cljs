@@ -42,6 +42,11 @@
     (take 5 (subvec results (* @page 5)))
     results))
 
+
+(defn reset-filter []
+  (reset! page 0)
+  (reset! filter-query ""))
+
 ;; -------------------------
 ;; Component to build images
 
@@ -110,7 +115,7 @@
                :on-change #(filter-visuals (-> % .-target .-value))}]
       [:button {:type "button"
                 :class (str "filter__clear-btn" (if (blank? @filter-query) " filter__clear-btn--visible"))
-                :on-click #(reset! filter-query "")} "clear"]]]
+                :on-click reset-filter} "clear"]]]
 
     [:div {:class "visuals-gallery"}
      (for [item (limit-results (if (blank? @filter-query)
