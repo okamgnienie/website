@@ -53,7 +53,13 @@
 
   (defroute "/visuals" []
     (swap! app-state assoc :name "visuals")
-    (swap! app-state assoc :page :visuals))
+    (swap! app-state assoc :page :visuals)
+    (swap! app-state assoc :page-number 1))
+
+  (defroute "/visuals/:page" [page]
+    (swap! app-state assoc :name "visuals")
+    (swap! app-state assoc :page :visuals)
+    (swap! app-state assoc :page-number (int page)))
 
   (defroute "/contact" []
     (swap! app-state assoc :name "contact")
@@ -67,27 +73,27 @@
 (defmulti current-page #(@app-state :page))
 (defmethod current-page :home []
   [:div
-   [navbar #(@app-state :name)]
+   [navbar (@app-state :name)]
    [home]
    [footer "bright"]])
 (defmethod current-page :work []
   [:div
-   [navbar #(@app-state :name)]
+   [navbar (@app-state :name)]
    [work]
    [footer "bright"]])
 (defmethod current-page :hours []
   [:div
-   [navbar #(@app-state :name)]
+   [navbar (@app-state :name)]
    [hours]
    [footer "bright"]])
 (defmethod current-page :visuals []
   [:div
-   [navbar #(@app-state :name)]
-   [visuals]
+   [navbar (@app-state :name)]
+   [visuals (@app-state :page-number)]
    [footer "dark"]])
 (defmethod current-page :contact []
   [:div
-   [navbar #(@app-state :name)]
+   [navbar (@app-state :name)]
    [contact]
    [footer "bright"]])
 (defmethod current-page :default []
@@ -103,8 +109,8 @@
       (second (split hash #"/")))))
 
 (defn mount-root []
-  (reset! app-state {:name (get-view-name)
-                     :page (keyword (get-view-name))})
+  (swap! app-state assoc :name (get-view-name))
+  (swap! app-state assoc :page (keyword (get-view-name)))
 
   (r/render [current-page] (.getElementById js/document "app")))
 

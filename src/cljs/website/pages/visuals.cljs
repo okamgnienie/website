@@ -31,7 +31,7 @@
                        (fn [x]
                          (some #{@filter-query} (x :tags))) @visuals-data)))))
 
-(defn limit-results [results]
+(defn limit-results [page-number results]
   (js/scroll 0 0)
 
   (reset! max-page
@@ -39,7 +39,7 @@
                 (/ (count results) 5))))
 
   (if (> (count results) 5)
-    (take 5 (subvec results (* (dec @page) 5)))
+    (take 5 (subvec results (* (dec page-number) 5)))
     results))
 
 
@@ -84,26 +84,26 @@
 ;; -------------------------
 ;; Pagination component
 
-(defn manage-page []
+(defn manage-page [page-number]
   [:div {:class "visuals-pagination noselect"}
-   [:span {:class (str "visuals-pagination__arrow visuals-pagination__arrow--left "
-                       (if (= @page 1)
-                         "visuals-pagination__arrow--disabled"))
-           :on-click #(if (> @page 1) (reset! page (dec @page)))}
+   [:a {:class (str "visuals-pagination__arrow visuals-pagination__arrow--left "
+                    (if (= page-number 1)
+                      "visuals-pagination__arrow--disabled"))
+        :href (str "#/visuals/" (dec page-number))}
     [:i {:class "fa fa-long-arrow-left" :aria-hidden "true"}]]
 
-   [:span {:class "visuals-pagination__current"} @page]
+   [:span {:class "visuals-pagination__current"} page-number]
 
-   [:span {:class (str "visuals-pagination__arrow visuals-pagination__arrow--right "
-                       (if (= @page @max-page)
-                         "visuals-pagination__arrow--disabled"))
-           :on-click #(if (< @page @max-page) (reset! page (inc @page)))}
+   [:a {:class (str "visuals-pagination__arrow visuals-pagination__arrow--right "
+                    (if (= page-number @max-page)
+                      "visuals-pagination__arrow--disabled"))
+        :href (str "#/visuals/" (inc page-number))}
     [:i {:class "fa fa-long-arrow-right" :aria-hidden "true"}]]])
 
 ;; ----------------------
 ;; Visuals page main view
 
-(defn visuals []
+(defn visuals [page-number]
   [:div {:class "view view--visuals"}
    [:div {:class "container"}
     [:div {:class "options"}
@@ -118,9 +118,9 @@
                 :on-click reset-filter} "clear"]]]
 
     [:div {:class "visuals-gallery"}
-     (for [item (limit-results (if (blank? @filter-query)
-                                 @visuals-data
-                                 @filtered-visuals-data))]
+     (for [item (limit-results page-number (if (blank? @filter-query)
+                                             @visuals-data
+                                             @filtered-visuals-data))]
        ^{:key (item :id)} [visual item])]
 
-    [manage-page]]])
+    [manage-page page-number]]])

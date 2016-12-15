@@ -89,7 +89,7 @@
     [:li {:class "navbar__item navbar__item--home"}
      [:a {:href "#/"}
       [:div {:class "navbar__title navbar__title--home"}
-       [:div {:class (str "navbar__animated-underline" (if (= (state-name) "home") " navbar__animated-underline--active"))}
+       [:div {:class (str "navbar__animated-underline" (if (= state-name "home") " navbar__animated-underline--active"))}
         [:span "Ho"] "me"]]]]
 
     ;; - WORK -
@@ -109,7 +109,7 @@
 
        [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--yellow navbar__digital-line-cover--yellow-1"}]
        [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--yellow navbar__digital-line-cover--yellow-2"}]]
-      [:div {:class (str "navbar__title navbar__title--work navbar__animated-underline" (if (= (state-name) "work") " navbar__animated-underline--active"))}
+      [:div {:class (str "navbar__title navbar__title--work navbar__animated-underline" (if (= state-name "work") " navbar__animated-underline--active"))}
        [:span "Work"]]]]
 
     ;; - HOURS -
@@ -131,7 +131,7 @@
        [:div {:class "navbar__time"}]
        [:div {:class "navbar__time"}]
        [:div {:class "navbar__time"}]]
-      [:div {:class (str "navbar__title navbar__title--hours navbar__animated-underline" (if (= (state-name) "hours") " navbar__animated-underline--active"))}
+      [:div {:class (str "navbar__title navbar__title--hours navbar__animated-underline" (if (= state-name "hours") " navbar__animated-underline--active"))}
        [:span "Hours"]]]]
 
     ;; - VISUALS -
@@ -147,7 +147,7 @@
        [:div {:class "navbar__rainbow navbar__rainbow--blue"}]
        [:div {:class "navbar__rainbow navbar__rainbow--purple"}]
        [:div {:class "navbar__rainbow navbar__rainbow--pink"}]]
-      [:div {:class (str "navbar__title navbar__title--visuals navbar__animated-underline" (if (= (state-name) "visuals") " navbar__animated-underline--active"))}
+      [:div {:class (str "navbar__title navbar__title--visuals navbar__animated-underline" (if (= state-name "visuals") " navbar__animated-underline--active"))}
        [:span "Visuals"]]]]
 
     ;; - CONTACT -
@@ -163,7 +163,7 @@
        [:div {:class "navbar__radio-wave"}]
        [:div {:class "navbar__radio-wave"}]
        [:div {:class "navbar__radio-wave"}]]
-      [:div {:class (str "navbar__title navbar__title--contact navbar__animated-underline" (if (= (state-name) "contact") " navbar__animated-underline--active"))
+      [:div {:class (str "navbar__title navbar__title--contact navbar__animated-underline" (if (= state-name "contact") " navbar__animated-underline--active"))
              :on-mouse-enter #(start-animating-radio-waves)
              :on-mouse-leave #(stop-animating-radio-waves)}
        [:span "Contact"]]]]]])
