@@ -12,9 +12,9 @@
 
 (def filtered-visuals-data (r/atom []))
 
-(def page (r/atom 0))
+(def page (r/atom 1))
 
-(def max-page (r/atom 0))
+(def max-page (r/atom 1))
 
 (get-visuals visuals-data)
 
@@ -24,7 +24,7 @@
 (defn filter-visuals [query]
   (reset! filter-query query)
 
-  (reset! page 0)
+  (reset! page 1)
 
   (reset! filtered-visuals-data
           (vec (doall (filter
@@ -35,16 +35,16 @@
   (js/scroll 0 0)
 
   (reset! max-page
-          (int (Math/floor
+          (int (Math/ceil
                 (/ (count results) 5))))
 
   (if (> (count results) 5)
-    (take 5 (subvec results (* @page 5)))
+    (take 5 (subvec results (* (dec @page) 5)))
     results))
 
 
 (defn reset-filter []
-  (reset! page 0)
+  (reset! page 1)
   (reset! filter-query ""))
 
 ;; -------------------------
@@ -87,12 +87,12 @@
 (defn manage-page []
   [:div {:class "visuals-pagination noselect"}
    [:span {:class (str "visuals-pagination__arrow visuals-pagination__arrow--left "
-                       (if (< @page 1)
+                       (if (= @page 1)
                          "visuals-pagination__arrow--disabled"))
-           :on-click #(if (> @page 0) (reset! page (dec @page)))}
+           :on-click #(if (> @page 1) (reset! page (dec @page)))}
     [:i {:class "fa fa-long-arrow-left" :aria-hidden "true"}]]
 
-   [:span {:class "visuals-pagination__current"} (+ @page 1)]
+   [:span {:class "visuals-pagination__current"} @page]
 
    [:span {:class (str "visuals-pagination__arrow visuals-pagination__arrow--right "
                        (if (= @page @max-page)
