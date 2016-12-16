@@ -17,7 +17,8 @@
                                        red-2
                                        yellow-2
                                        green-2
-                                       orange-1]]))
+                                       orange-1
+                                       blue-2]]))
 
 ;; --------------
 ;; Custom classes
@@ -32,6 +33,8 @@
 (defclass filter__input)
 (defclass filter__clear-btn)
 (defclass filter__clear-btn--visible)
+(defclass filter__progress)
+(defclass filter__progress--animated)
 
 ;; Visual component
 (defclass visual)
@@ -67,7 +70,8 @@
    [options {:background-color gray-4}]
 
    [filter {:height "50px"
-            :display "flex"}]
+            :display "flex"
+            :position "relative"}]
 
    [filter__input filter__clear-btn {:font-size "16px"
                                      :font-weight 300}]
@@ -83,6 +87,16 @@
                    :height "34px"
                    :flex-grow 1}]
 
+   [filter__progress {:content "''"
+                      :display "block"
+                      :height "2px"
+                      :background-color blue-2
+                      :position "absolute"
+                      :bottom "-2px"
+                      :width "0%"}]
+
+   [filter__progress--animated {:animation-delay 0.2
+                                :animation "visuals-progress 0.8s cubic-bezier(0.55, 0.06, 0.68, 0.19)"}]
 
    [filter__clear-btn {:color gray-2
                        :transition "width 0.3s linear, padding 0.2s linear"

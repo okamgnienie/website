@@ -115,7 +115,8 @@
                :on-change #(filter-visuals (-> % .-target .-value))}]
       [:button {:type "button"
                 :class (str "filter__clear-btn" (if (blank? @filter-query) " filter__clear-btn--visible"))
-                :on-click reset-filter} "clear"]]]
+                :on-click reset-filter} "clear"]
+      [:div {:class "filter__progress"}]]]
 
     [:div {:class "visuals-gallery"}
      (for [item (limit-results page-number (if (blank? @filter-query)

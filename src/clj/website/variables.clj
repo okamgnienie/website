@@ -31,6 +31,7 @@
 (def green-2 "#8BC34A")
 
 (def blue-1 "#0024FF")
+(def blue-2 "#2196f3")
 
 (def purple-1 "#C500FF")
 
