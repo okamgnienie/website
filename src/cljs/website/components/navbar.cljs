@@ -72,6 +72,91 @@
   (reset! radio-on false)
   (.clearInterval js/window @radio-interval))
 
+;; -------------------------------------
+;; BUTTON COMPONENTS
+
+(def active-button-class
+  "navbar__animated-underline--active")
+
+(def work-colors
+  ["cyan" "red" "yellow"])
+
+(def visuals-colors
+  ["red" "orange" "yellow" "green" "cyan" "blue" "purple" "pink"])
+
+;; - HOME -
+
+(defn home-button [state-name]
+  [:li.navbar__item.navbar__item--home
+   [:a {:href "#/"}
+    [:div.navbar__title.navbar__title--home
+     [:div.navbar__animated-underline
+      {:class (when (= state-name "home") active-button-class)}
+      [:span "Ho"] "me"]]]])
+
+;; - WORK -
+
+(defn work-button [state-name]
+  [:li.navbar__item.navbar__item--work
+   [:a {:href "#/work"}
+    [:div.navbar__magic.navbar__magic--work
+     (map (fn [c] [:div.navbar__digital-line
+                   {:class (str "navbar__digital-line--" c) :key c}])
+          work-colors)
+     (map (fn [c]
+            (map (fn [i]
+                   [:div.navbar__digital-line-cover
+                    {:class (str "navbar__digital-line-cover--" c
+                                 " navbar__digital-line-cover--" c "-" i)
+                     :key (str c "-" i)}])
+                 (range 1 3)))
+          work-colors)]
+    [:div.navbar__title.navbar__title--work.navbar__animated-underline
+     {:class (when (= state-name "work") active-button-class)}
+     [:span "Work"]]]])
+
+;; - VISUALS -
+
+(defn visuals-button [state-name]
+  [:li.navbar__item.navbar__item--visuals
+   [:a {:href "#/visuals"}
+    [:div {:class "navbar__magic navbar__magic--visuals"}
+     (map (fn [c]
+            [:div.navbar__rainbow
+             {:class (str "navbar__rainbow--" c)
+              :key c}]) visuals-colors)]
+    [:div.navbar__title.navbar__title--visuals.navbar__animated-underline
+     {:class (when (= state-name "visuals") active-button-class)}
+     [:span "Visuals"]]]])
+
+;; - HOURS -
+
+(defn hours-button [state-name]
+  [:li.navbar__item.navbar__item--hours
+   {:on-mouse-enter #(start-animating-time)
+    :on-mouse-leave #(stop-animating-time)}
+   [:a {:href "#/hours"}
+    [:div.navbar__magic.navbar__magic--hours
+     (map (fn [k] [:div.navbar__time {:key k}]) (range 12))
+     [:div.navbar__title.navbar__title--hours.navbar__animated-underline
+      {:class (when (= state-name "hours") active-button-class)}
+      [:span "Hours"]]]]])
+
+;; - CONTACT -
+
+(defn contact-button [state-name]
+  [:li.navbar__item.navbar__item--contact
+   [:a {:href "#/contact"}
+    [:div.navbar__magic.navbar__magic--contact
+     (map (fn [k] [:div.navbar__radio-wave {:key k}]) (range 8))]
+    [:div.navbar__title.navbar__title--contact.navbar__animated-underline
+     {:class (when (= state-name "contact") active-button-class)
+      :on-mouse-enter #(start-animating-radio-waves)
+      :on-mouse-leave #(stop-animating-radio-waves)}
+     [:span "Contact"]]]])
+
+;; -------------------------------------
+;; NAVBAR COMPONENT
 
 (defn navbar [state-name]
   [:div {:class "navbar container-fluid"}
@@ -83,87 +168,8 @@
    ;; - - - DESKTOP NAVBAR - - -
 
    [:ul {:class "navbar__desktop container"}
-
-    ;; - HOME -
-
-    [:li {:class "navbar__item navbar__item--home"}
-     [:a {:href "#/"}
-      [:div {:class "navbar__title navbar__title--home"}
-       [:div {:class (str "navbar__animated-underline" (if (= state-name "home") " navbar__animated-underline--active"))}
-        [:span "Ho"] "me"]]]]
-
-    ;; - WORK -
-
-    [:li {:class "navbar__item navbar__item--work"}
-     [:a {:href "#/work"}
-      [:div {:class "navbar__magic navbar__magic--work"}
-       [:div {:class "navbar__digital-line navbar__digital-line--cyan"}]
-       [:div {:class "navbar__digital-line navbar__digital-line--red"}]
-       [:div {:class "navbar__digital-line navbar__digital-line--yellow"}]
-
-       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--cyan navbar__digital-line-cover--cyan-1"}]
-       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--cyan navbar__digital-line-cover--cyan-2"}]
-
-       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--red navbar__digital-line-cover--red-1"}]
-       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--red navbar__digital-line-cover--red-2"}]
-
-       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--yellow navbar__digital-line-cover--yellow-1"}]
-       [:div {:class "navbar__digital-line-cover navbar__digital-line-cover--yellow navbar__digital-line-cover--yellow-2"}]]
-      [:div {:class (str "navbar__title navbar__title--work navbar__animated-underline" (if (= state-name "work") " navbar__animated-underline--active"))}
-       [:span "Work"]]]]
-
-    ;; - HOURS -
-
-    [:li {:class "navbar__item navbar__item--hours"
-          :on-mouse-enter #(start-animating-time)
-          :on-mouse-leave #(stop-animating-time)}
-     [:a {:href "#/hours"}
-      [:div {:class "navbar__magic navbar__magic--hours"}
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]
-       [:div {:class "navbar__time"}]]
-      [:div {:class (str "navbar__title navbar__title--hours navbar__animated-underline" (if (= state-name "hours") " navbar__animated-underline--active"))}
-       [:span "Hours"]]]]
-
-    ;; - VISUALS -
-
-    [:li {:class "navbar__item navbar__item--visuals"}
-     [:a {:href "#/visuals"}
-      [:div {:class "navbar__magic navbar__magic--visuals"}
-       [:div {:class "navbar__rainbow navbar__rainbow--red"}]
-       [:div {:class "navbar__rainbow navbar__rainbow--orange"}]
-       [:div {:class "navbar__rainbow navbar__rainbow--yellow"}]
-       [:div {:class "navbar__rainbow navbar__rainbow--green"}]
-       [:div {:class "navbar__rainbow navbar__rainbow--cyan"}]
-       [:div {:class "navbar__rainbow navbar__rainbow--blue"}]
-       [:div {:class "navbar__rainbow navbar__rainbow--purple"}]
-       [:div {:class "navbar__rainbow navbar__rainbow--pink"}]]
-      [:div {:class (str "navbar__title navbar__title--visuals navbar__animated-underline" (if (= state-name "visuals") " navbar__animated-underline--active"))}
-       [:span "Visuals"]]]]
-
-    ;; - CONTACT -
-
-    [:li {:class "navbar__item navbar__item--contact"}
-     [:a {:href "#/contact"}
-      [:div {:class "navbar__magic navbar__magic--contact"}
-       [:div {:class "navbar__radio-wave"}]
-       [:div {:class "navbar__radio-wave"}]
-       [:div {:class "navbar__radio-wave"}]
-       [:div {:class "navbar__radio-wave"}]
-       [:div {:class "navbar__radio-wave"}]
-       [:div {:class "navbar__radio-wave"}]
-       [:div {:class "navbar__radio-wave"}]
-       [:div {:class "navbar__radio-wave"}]]
-      [:div {:class (str "navbar__title navbar__title--contact navbar__animated-underline" (if (= state-name "contact") " navbar__animated-underline--active"))
-             :on-mouse-enter #(start-animating-radio-waves)
-             :on-mouse-leave #(stop-animating-radio-waves)}
-       [:span "Contact"]]]]]])
+    [home-button state-name]
+    [work-button state-name]
+    [hours-button state-name]
+    [visuals-button state-name]
+    [contact-button state-name]]])
