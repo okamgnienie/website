@@ -1,35 +1,36 @@
 (ns website.contact)
 
+(def links
+  [{:link "https://linkedin.com/in/phardyn"
+    :class "fa-linkedin"}
+
+   {:link "https://facebook.com/przemyslawhardyn"
+    :class "fa-facebook"}
+
+   {:link "https://github.com/phardyn"
+    :class "fa-github"}
+
+   {:link "https://t.com/p_hardyn"
+    :class "fa-twitter"}])
+
 (defn contact []
-  [:div {:class "view view--contact"}
-   [:div {:class "container"}
-    [:div {:class "contacts"}
+  [:div.view.view--contact
+   [:div.container
+    [:div.contacts
 
-     [:a {:target "_blank"
-          :class "contacts__icon"
-          :href "https://linkedin.com/in/phardyn"}
-      [:i {:class "fa fa-linkedin fa-3x"}]]
+     ;; Links with font awesome icons
+     (map (fn [l]
+            [:a.contacts__icon {:key (:class l)
+                                :target "_blank"
+                                :href (:link l)}
+             [:i.fa.fa-3x {:class (:class l)}]])
+          links)
 
-     [:a {:target "_blank"
-          :class "contacts__icon"
-          :href "https://facebook.com/przemyslawhardyn"}
-      [:i {:class "fa fa-facebook fa-3x"}]]
-
-     [:a {:target "_blank"
-          :class "contacts__icon"
-          :href "https://github.com/phardyn"}
-      [:i {:class "fa fa-github fa-3x"}]]
-
-     [:a {:target "_blank"
-          :class "contacts__icon"
-          :href "https://t.com/p_hardyn"}
-      [:i {:class "fa fa-twitter fa-3x"}]]
-
-     [:a {:target "_blank"
-          :class "contacts__icon contacts__icon--vsco"
-          :href "https://vsco.co/hardyn"}
+     ;; Links with custom icons
+     [:a.contacts__icon.contacts__icon--vsco {:target "_blank"
+                                              :href "https://vsco.co/hardyn"}
       [:i "VSCO"]]]
 
-    [:form {:class "contact-form"}
+    [:form.contact-form
      [:textarea {:placeholder "Type here what is on your heart."}]
      [:input {:type "submit" :value "send my message"}]]]])
