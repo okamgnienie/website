@@ -1,31 +1,32 @@
-(ns website.footer)
+(ns website.footer
+  (:require [website.social-links :refer [links]]))
+
+(def icons [{:class "footer__link--linkedin"
+             :icon-class "fa fa-1x fa-linkedin"}
+
+            {:class "footer__link--facebook"
+             :icon-class "fa fa-1x fa-facebook"}
+
+            {:class "footer__link--github"
+             :icon-class "fa fa-1x fa-github"}
+
+            {:class "footer__link--twitter"
+             :icon-class "fa fa-1x fa-twitter"}
+
+            {:label "VSCO"
+             :class "footer__icon--vsco"}])
 
 (defn footer [theme]
-  [:footer {:class (str "footer container-fluid footer--" theme)}
-   [:div {:class "container"}
-    [:div {:class "footer__credits"} "Przemyslaw Hardyn • 2016 • Geneva"]
-    [:div {:class "footer__contact-icons"}
-     [:a {:target "_blank"
-          :class "footer__link footer__link--linkedin"
-          :href "https://linkedin.com/in/phardyn"}
-      [:i {:class "fa fa-linkedin fa-1x"}]]
+  [:footer.footer.container-fluid {:class (str "footer--" theme)}
+   [:div.container
+    [:div.footer__credits "Przemyslaw Hardyn • 2016 • Geneva"]
+    [:div.footer__contact-icons
 
-     [:a {:target "_blank"
-          :class "footer__link footer__link--facebook"
-          :href "https://facebook.com/przemyslawhardyn"}
-      [:i {:class "fa fa-facebook fa-1x"}]]
-
-     [:a {:target "_blank"
-          :class "footer__link footer__link--github"
-          :href "https://github.com/phardyn"}
-      [:i {:class "fa fa-github fa-1x"}]]
-
-     [:a {:target "_blank"
-          :class "footer__link footer__link--twitter"
-          :href "https://t.com/p_hardyn"}
-      [:i {:class "fa fa-twitter fa-1x"}]]
-
-     [:a {:target "_blank"
-          :class "footer__link footer__link--vsco"
-          :href "https://vsco.co/hardyn"}
-      [:i {:class "footer__vsco-icon"} "VSCO"]]]]])
+     ;; Links with font awesome icons
+     (map (fn [l]
+            [:a.footer__link {:key (:link l)
+                              :class (:class l)
+                              :target "_blank"
+                              :href (:link l)}
+             [:i {:class (:icon-class l)} (:label l)]])
+          (map #(merge %1 %2) icons links))]]])
