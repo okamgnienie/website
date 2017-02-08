@@ -1,35 +1,25 @@
-(ns website.contact)
+(ns website.contact
+  (:require [website.social-links :refer [links]]))
 
-(def links
-  [{:link "https://linkedin.com/in/phardyn"
-    :class "fa-linkedin"}
-
-   {:link "https://facebook.com/przemyslawhardyn"
-    :class "fa-facebook"}
-
-   {:link "https://github.com/phardyn"
-    :class "fa-github"}
-
-   {:link "https://t.com/p_hardyn"
-    :class "fa-twitter"}])
+(def icons [{:icon-class "fa fa-3x fa-linkedin"}
+            {:icon-class "fa fa-3x fa-facebook"}
+            {:icon-class "fa fa-3x fa-github"}
+            {:icon-class "fa fa-3x fa-twitter"}
+            {:class "contacts__icon--vsco" :label "VSCO"}])
 
 (defn contact []
   [:div.view.view--contact
    [:div.container
     [:div.contacts
 
-     ;; Links with font awesome icons
+     ;; Social links
      (map (fn [l]
-            [:a.contacts__icon {:key (:class l)
+            [:a.contacts__icon {:key (:link l)
+                                :class (:class l)
                                 :target "_blank"
                                 :href (:link l)}
-             [:i.fa.fa-3x {:class (:class l)}]])
-          links)
-
-     ;; Links with custom icons
-     [:a.contacts__icon.contacts__icon--vsco {:target "_blank"
-                                              :href "https://vsco.co/hardyn"}
-      [:i "VSCO"]]]
+             [:i {:class (:icon-class l)} (:label l)]])
+          (map #(merge %1 %2) icons links))]
 
     [:form.contact-form
      [:textarea {:placeholder "Type here what is on your heart."}]
