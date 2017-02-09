@@ -42,7 +42,7 @@
          :background-color white-1}]
 
   ;; For sticky footer
-  [(after view) {:display "block"
+  [(view after) {:display "block"
                  :content ""
                  :height "80px"}] ; footer height
 
