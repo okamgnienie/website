@@ -48,16 +48,14 @@
          (set! (.-className elem) "navbar__radio-wave"))))))
 
 (defn animate-radio-waves []
-  (if @radio-on
+  (when @radio-on
     (animate-radio-wave))
 
-  (js/setTimeout (fn []
-                   (if @radio-on
-                     (animate-radio-wave))) 300)
+  (js/setTimeout #(when @radio-on
+                    (animate-radio-wave)) 300)
 
-  (js/setTimeout (fn []
-                   (if @radio-on
-                     (animate-radio-wave))) 700))
+  (js/setTimeout #(when @radio-on
+                    (animate-radio-wave)) 700))
 
 (defn start-animating-radio-waves []
   (reset! radio-on true)
