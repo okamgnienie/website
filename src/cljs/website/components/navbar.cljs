@@ -85,7 +85,7 @@
 ;; - HOME -
 
 (defn home-button [state-name]
-  [:li.navbar__item.navbar__item--home
+  [:li.desktop-navbar__item.desktop-navbar__item--home
    [:a {:href "#/"}
     [:div.navbar__title.navbar__title--home
      [:div.navbar__animated-underline
@@ -95,7 +95,7 @@
 ;; - WORK -
 
 (defn work-button [state-name]
-  [:li.navbar__item.navbar__item--work
+  [:li.desktop-navbar__item.desktop-navbar__item--work
    [:a {:href "#/work"}
     [:div.navbar__magic.navbar__magic--work
      (map (fn [c] [:div.navbar__digital-line
@@ -116,7 +116,7 @@
 ;; - VISUALS -
 
 (defn visuals-button [state-name]
-  [:li.navbar__item.navbar__item--visuals
+  [:li.desktop-navbar__item.desktop-navbar__item--visuals
    [:a {:href "#/visuals"}
     [:div {:class "navbar__magic navbar__magic--visuals"}
      (map (fn [c]
@@ -130,7 +130,7 @@
 ;; - HOURS -
 
 (defn hours-button [state-name]
-  [:li.navbar__item.navbar__item--hours
+  [:li.desktop-navbar__item.desktop-navbar__item--hours
    {:on-mouse-enter #(start-animating-time)
     :on-mouse-leave #(stop-animating-time)}
    [:a {:href "#/hours"}
@@ -143,7 +143,7 @@
 ;; - CONTACT -
 
 (defn contact-button [state-name]
-  [:li.navbar__item.navbar__item--contact
+  [:li.desktop-navbar__item.desktop-navbar__item--contact
    [:a {:href "#/contact"}
     [:div.navbar__magic.navbar__magic--contact
      (map (fn [k] [:div.navbar__radio-wave {:key k}]) (range 8))]

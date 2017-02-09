@@ -33,12 +33,12 @@
 (defclass navbar__desktop)
 
 ;; Menu items
-(defclass navbar__item)
-(defclass navbar__item--home)
-(defclass navbar__item--work)
-(defclass navbar__item--hours)
-(defclass navbar__item--visuals)
-(defclass navbar__item--contact)
+(defclass desktop-navbar__item)
+(defclass desktop-navbar__item--home)
+(defclass desktop-navbar__item--work)
+(defclass desktop-navbar__item--hours)
+(defclass desktop-navbar__item--visuals)
+(defclass desktop-navbar__item--contact)
 
 ;; Titles
 (defclass navbar__title)
@@ -121,7 +121,7 @@
   [navbar__desktop {:height navbar-height
                     :position "relative"}]
 
-  [navbar__item {:display "inline-block"
+  [desktop-navbar__item {:display "inline-block"
                  :font-size "20px"
                  :cursor "pointer"
                  :text-transform "uppercase"
@@ -173,7 +173,7 @@
 
   ;; Hover
 
-  [(navbar__item--home hover) {:animation "home 10s linear infinite"
+  [(desktop-navbar__item--home hover) {:animation "home 10s linear infinite"
                                :background-image "url(/images/home.jpg)"
                                :background-size "88px"
                                :color white-1}
@@ -251,15 +251,15 @@
                         :width "88px"
                         :z-index 1}]
 
-  [navbar__item--work {:transition "padding 0.2s ease-in-out"
+  [desktop-navbar__item--work {:transition "padding 0.2s ease-in-out"
                        :padding "0 0 0 0"}]
 
-  [(navbar__item--work hover) {:transition "padding 0.2s ease-in-out"
+  [(desktop-navbar__item--work hover) {:transition "padding 0.2s ease-in-out"
                                :padding "0 30px 0 10px"}]
 
   ;; - - - HOURS - - -
 
-  [navbar__item--hours {:position "initial"}]
+  [desktop-navbar__item--hours {:position "initial"}]
 
   [navbar__time {:position "absolute"
                  :z-index "-1"
@@ -317,13 +317,13 @@
 
   ;; Hover
 
-  [(navbar__item--visuals hover)
+  [(desktop-navbar__item--visuals hover)
    [navbar__title--visuals {:margin "0 3px 0 30px"
                             :transition "margin 0.2s ease-in-out"}]]
 
   ;; - - - CONTACT - - -
 
-  [navbar__item--contact {:position "initial"}]
+  [desktop-navbar__item--contact {:position "initial"}]
 
   [navbar__title--contact {:background-color "transparent"
                            :width "120px"}]
