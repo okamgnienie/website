@@ -16,6 +16,7 @@
 (def gray-6 "#bbb")
 
 (def black-1 "#111")
+(def black-2 "#222")
 
 (def cyan-1 "#01FFE5")
 

@@ -116,10 +116,11 @@
            :position "fixed"
            :z-index 2}]
 
-  [navbar__mobile {:display "none"}]
-
   [navbar__desktop {:height navbar-height
                     :position "relative"}]
+
+  (at-media {:max-width desktop-min}
+            [navbar__desktop {:display "none"}])
 
   [desktop-navbar__item {:display "inline-block"
                  :font-size "20px"

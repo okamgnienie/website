@@ -1,4 +1,5 @@
-(ns website.navbar)
+(ns website.navbar
+  (:require [reagent.core :as r]))
 
 (def time-interval (atom nil))
 (def radio-interval (atom nil))
@@ -156,12 +157,31 @@
 ;; -------------------------------------
 ;; NAVBAR COMPONENT
 
+(def mobile-menu-open (r/atom false))
+
+(def titles ["home" "work" "hours" "visuals" "contact"])
+
 (defn navbar [state-name]
   [:div {:class "navbar container-fluid"}
 
    ;; - - - MOBILE NAVBAR - - -
 
-   [:ul {:class "navbar__mobile"}]
+   [:div {:class "mobile-navbar"}
+    [:button {:class "mobile-navbar__menu-btn"
+              :on-click #(reset! mobile-menu-open (not @mobile-menu-open))}
+     "MENU"]
+
+    [:div.mobile-navbar__menu {:class (str (when (false? @mobile-menu-open)
+                                             "mobile-navbar__menu--hidden"))}
+
+     [:ul.mobile-navbar__menu-list
+      (map (fn [t]
+             [:li.mobile-navbar__menu-item {:key t}
+              [:a.mobile-navbar__menu-link.navbar__animated-underline
+               {:href (str "#/" t)
+                :on-click #(reset! mobile-menu-open (not @mobile-menu-open))
+                :class (str (when (= state-name t) "navbar__animated-underline--active"))} t]])
+           titles)]]]
 
    ;; - - - DESKTOP NAVBAR - - -
 
