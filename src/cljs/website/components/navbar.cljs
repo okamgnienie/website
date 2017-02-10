@@ -162,25 +162,31 @@
 (def titles ["home" "work" "hours" "visuals" "contact"])
 
 (defn navbar [state-name]
-  [:div {:class "navbar container-fluid"}
+  [:div.navbar.container-fluid
 
    ;; - - - MOBILE NAVBAR - - -
 
-   [:div {:class "mobile-navbar"}
-    [:button {:class "mobile-navbar__menu-btn"
-              :on-click #(reset! mobile-menu-open (not @mobile-menu-open))}
+   [:div.mobile-navbar
+    [:button.mobile-navbar__menu-btn
+     {:on-click #(reset! mobile-menu-open true)}
      "MENU"]
 
-    [:div.mobile-navbar__menu {:class (str (when (false? @mobile-menu-open)
-                                             "mobile-navbar__menu--hidden"))}
+    [:div.mobile-navbar__menu
+     {:class (str (when (false? @mobile-menu-open)
+                    "mobile-navbar__menu--hidden"))}
+
+     [:button.mobile-navbar__menu-btn.mobile-navbar__menu-btn--close
+      {:on-click #(reset! mobile-menu-open false)}
+      "CLOSE"]
 
      [:ul.mobile-navbar__menu-list
       (map (fn [t]
              [:li.mobile-navbar__menu-item {:key t}
               [:a.mobile-navbar__menu-link.navbar__animated-underline
                {:href (str "#/" t)
-                :on-click #(reset! mobile-menu-open (not @mobile-menu-open))
-                :class (str (when (= state-name t) "navbar__animated-underline--active"))} t]])
+                :on-click #(reset! mobile-menu-open false)
+                :class (str (when (= state-name t)
+                              "navbar__animated-underline--active"))} t]])
            titles)]]]
 
    ;; - - - DESKTOP NAVBAR - - -

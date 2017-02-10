@@ -4,7 +4,10 @@
             [garden.selectors :refer [defclass after]]
             [website.variables :refer [desktop-min
                                        gray-2
-                                       black-2]]))
+                                       black-2
+                                       orange-1]]))
+
+(def animation-speed ".3s")
 
 (defclass mobile-navbar)
 
@@ -12,29 +15,31 @@
 (defclass mobile-navbar__menu--hidden)
 
 (defclass mobile-navbar__menu-list)
-(defclass mobile-navbar__menu-btn)
 (defclass mobile-navbar__menu-item)
 (defclass mobile-navbar__menu-link)
+
+(defclass mobile-navbar__menu-btn)
+(defclass mobile-navbar__menu-btn--close)
 
 (defstyles styles
   (at-media {:min-width desktop-min}
             [mobile-navbar {:display "none"}])
 
   [mobile-navbar__menu {:position "absolute"
-                        :top "50px"
+                        :top 0
                         :left 0
+                        :background-color black-2
                         :width "100%"
                         :overflow "hidden"
-                        :height "225px"
-                        :transition "height .3s"}]
+                        :height "275px"
+                        :transition (str "height " animation-speed)}]
 
   [mobile-navbar__menu--hidden {:height 0
-                                :transition "height .3s"}]
+                                :transition (str "height " animation-speed)}]
 
   [mobile-navbar__menu-list {:position "absolute"
                              :width "100%"
                              :bottom 0
-                             :background-color black-2
                              :font-weight 300
                              :padding-top "10px"
                              :padding-bottom "10px"
@@ -64,4 +69,8 @@
                             :margin 0
                             :font-weight 300
                             :text-align "center"
-                            :height "50px"}])
+                            :height "50px"}]
+
+  [mobile-navbar__menu-btn--close {:color orange-1
+                                   :top "initial"
+                                   :bottom "225px"}])
