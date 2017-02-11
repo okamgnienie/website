@@ -4,6 +4,7 @@
             [website.animations :as animations]
             [website.navbar-styles :as navbar]
             [website.mobile-navbar-styles :as mobile-navbar]
+            [website.desktop-navbar-styles :as desktop-navbar]
             [website.main-styles :as main]
             [website.footer-styles :as footer]
             [website.visuals-styles :as visuals]
@@ -18,6 +19,7 @@
    navbar-animations/all
    navbar/styles
    mobile-navbar/styles
+   desktop-navbar/styles
    main/styles
    footer/styles
    home/styles

@@ -7,7 +7,8 @@
 (def radio-on (atom false))
 
 (defn get-time-elem []
-  (js/document.querySelector "div.navbar__time:not(.navbar__time--active)"))
+  (js/document.querySelector
+   "div.desktop-navbar__time:not(.desktop-navbar__time--active)"))
 
 (defn animation-finished [elem handler]
   (.addEventListener elem "webkitAnimationEnd" handler)
@@ -25,11 +26,12 @@
     (fn []
       (let [next-elem (get-time-elem)]
         (when (some? next-elem)
-          (set! (.-className next-elem) "navbar__time navbar__time--active")
+          (set! (.-className next-elem)
+                "desktop-navbar__time desktop-navbar__time--active")
           (animation-finished
            next-elem
            (fn []
-             (set! (.-className next-elem) "navbar__time")))))) 120)))
+             (set! (.-className next-elem) "desktop-navbar__time")))))) 120)))
 
 (defn stop-animating-time []
   (.clearInterval js/window @time-interval))
@@ -37,16 +39,18 @@
 ;; - - - RADIO WAVE ANIMATION - - -
 
 (defn get-radio-wave-elem []
-  (js/document.querySelector ".navbar__radio-wave:not(.navbar__radio-wave--active)"))
+  (js/document.querySelector
+   ".desktop-navbar__radio-wave:not(.desktop-navbar__radio-wave--active)"))
 
 (defn animate-radio-wave []
   (let [elem (get-radio-wave-elem)]
     (when (some? elem)
-      (set! (.-className elem) "navbar__radio-wave navbar__radio-wave--active")
+      (set! (.-className elem)
+            "desktop-navbar__radio-wave desktop-navbar__radio-wave--active")
       (animation-finished
        elem
        (fn []
-         (set! (.-className elem) "navbar__radio-wave"))))))
+         (set! (.-className elem) "desktop-navbar__radio-wave"))))))
 
 (defn animate-radio-waves []
   (when @radio-on
@@ -88,7 +92,7 @@
 (defn home-button [state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--home
    [:a {:href "#/"}
-    [:div.navbar__title.navbar__title--home
+    [:div.desktop-navbar__title.desktop-navbar__title--home
      [:div.navbar__animated-underline
       {:class (when (= state-name "home") active-button-class)}
       [:span "Ho"] "me"]]]])
@@ -98,19 +102,19 @@
 (defn work-button [state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--work
    [:a {:href "#/work"}
-    [:div.navbar__magic.navbar__magic--work
-     (map (fn [c] [:div.navbar__digital-line
-                   {:class (str "navbar__digital-line--" c) :key c}])
+    [:div.desktop-navbar__magic.desktop-navbar__magic--work
+     (map (fn [c] [:div.desktop-navbar__digital-line
+                   {:class (str "desktop-navbar__digital-line--" c) :key c}])
           work-colors)
      (map (fn [c]
             (map (fn [i]
-                   [:div.navbar__digital-line-cover
-                    {:class (str "navbar__digital-line-cover--" c
-                                 " navbar__digital-line-cover--" c "-" i)
+                   [:div.desktop-navbar__digital-line-cover
+                    {:class (str "desktop-navbar__digital-line-cover--" c
+                                 " desktop-navbar__digital-line-cover--" c "-" i)
                      :key (str c "-" i)}])
                  (range 1 3)))
           work-colors)]
-    [:div.navbar__title.navbar__title--work.navbar__animated-underline
+    [:div.desktop-navbar__title.desktop-navbar__title--work.navbar__animated-underline
      {:class (when (= state-name "work") active-button-class)}
      [:span "Work"]]]])
 
@@ -119,12 +123,12 @@
 (defn visuals-button [state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--visuals
    [:a {:href "#/visuals"}
-    [:div {:class "navbar__magic navbar__magic--visuals"}
+    [:div {:class "desktop-navbar__magic desktop-navbar__magic--visuals"}
      (map (fn [c]
-            [:div.navbar__rainbow
-             {:class (str "navbar__rainbow--" c)
+            [:div.desktop-navbar__rainbow
+             {:class (str "desktop-navbar__rainbow--" c)
               :key c}]) visuals-colors)]
-    [:div.navbar__title.navbar__title--visuals.navbar__animated-underline
+    [:div.desktop-navbar__title.desktop-navbar__title--visuals.navbar__animated-underline
      {:class (when (= state-name "visuals") active-button-class)}
      [:span "Visuals"]]]])
 
@@ -135,9 +139,9 @@
    {:on-mouse-enter #(start-animating-time)
     :on-mouse-leave #(stop-animating-time)}
    [:a {:href "#/hours"}
-    [:div.navbar__magic.navbar__magic--hours
-     (map (fn [k] [:div.navbar__time {:key k}]) (range 12))
-     [:div.navbar__title.navbar__title--hours.navbar__animated-underline
+    [:div.desktop-navbar__magic.desktop-navbar__magic--hours
+     (map (fn [k] [:div.desktop-navbar__time {:key k}]) (range 12))
+     [:div.desktop-navbar__title.desktop-navbar__title--hours.navbar__animated-underline
       {:class (when (= state-name "hours") active-button-class)}
       [:span "Hours"]]]]])
 
@@ -146,9 +150,9 @@
 (defn contact-button [state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--contact
    [:a {:href "#/contact"}
-    [:div.navbar__magic.navbar__magic--contact
-     (map (fn [k] [:div.navbar__radio-wave {:key k}]) (range 8))]
-    [:div.navbar__title.navbar__title--contact.navbar__animated-underline
+    [:div.desktop-navbar__magic.desktop-navbar__magic--contact
+     (map (fn [k] [:div.desktop-navbar__radio-wave {:key k}]) (range 8))]
+    [:div.desktop-navbar__title.desktop-navbar__title--contact.navbar__animated-underline
      {:class (when (= state-name "contact") active-button-class)
       :on-mouse-enter #(start-animating-radio-waves)
       :on-mouse-leave #(stop-animating-radio-waves)}
@@ -191,7 +195,7 @@
 
    ;; - - - DESKTOP NAVBAR - - -
 
-   [:ul {:class "navbar__desktop container"}
+   [:ul.desktop-navbar.container
     [home-button state-name]
     [work-button state-name]
     [hours-button state-name]

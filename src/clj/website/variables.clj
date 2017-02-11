@@ -57,3 +57,6 @@
 (def hours-grid-2 "400px")
 (def hours-grid-3 "600px")
 (def hours-grid-4 desktop-min)
+
+;; --- - --- - --- SIZING --- - --- - ---
+(def navbar-height "50px")
