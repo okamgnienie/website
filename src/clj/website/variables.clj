@@ -50,7 +50,7 @@
 (def main-font "'Roboto'")
 
 ;; --- - --- - --- MEDIA QUERIES --- - --- - ---
-
+(def desktop-navbar-min "555px")
 (def desktop-min "960px")
 
 (def hours-grid-1 "300px")

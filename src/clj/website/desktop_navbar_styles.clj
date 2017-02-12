@@ -18,6 +18,7 @@
                                        red-1
                                        yellow-1
                                        desktop-min
+                                       desktop-navbar-min
                                        red-1
                                        orange-1
                                        yellow-1
@@ -156,13 +157,6 @@
              :width 0
              :transition "width 0.2s ease-in-out, visibility 0.2s ease-in-out"}]]]]
 
-  ;; Media query
-
-  (at-media {:max-width desktop-min}
-            [desktop-navbar__title--home {:padding-left "10px"
-                                          :width "81px"}])
-
-
   ;; - - - WORK - - -
 
   [desktop-navbar__magic--work {:position "absolute"
@@ -246,11 +240,6 @@
 
   [desktop-navbar__title--hours {:width "96px"}]
 
-  ;; Media query
-
-  (at-media {:max-width desktop-min}
-            [desktop-navbar__time--active {:animation "hourglass-2 1.2s linear"}])
-
   ;; - - - VISUALS - - -
 
   [desktop-navbar__magic--visuals {:overflow "hidden"}]
@@ -312,8 +301,15 @@
 
   ;; - - - MEDIA QUERIES - - -
 
-  (at-media {:max-width desktop-min}
+  (at-media {:max-width desktop-navbar-min}
             [desktop-navbar {:display "none"}])
 
   (at-media {:max-width desktop-min}
-            [desktop-navbar__radio-wave--active {:animation "radio-wave-2 2.5s linear"}]))
+            [desktop-navbar__radio-wave--active {:animation "radio-wave-2 2.5s linear"}])
+
+  (at-media {:max-width desktop-min}
+            [desktop-navbar__time--active {:animation "hourglass-2 1.2s linear"}])
+
+  (at-media {:max-width desktop-min}
+            [desktop-navbar__title--home {:padding-left "10px"
+                                          :width "81px"}]))

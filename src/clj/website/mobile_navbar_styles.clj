@@ -2,7 +2,7 @@
   (:require [garden.def :refer [defstyles]]
             [garden.stylesheet :refer [at-media]]
             [garden.selectors :refer [defclass after]]
-            [website.variables :refer [desktop-min
+            [website.variables :refer [desktop-navbar-min
                                        gray-2
                                        black-2
                                        orange-1]]))
@@ -22,8 +22,6 @@
 (defclass mobile-navbar__menu-btn--close)
 
 (defstyles styles
-  (at-media {:min-width desktop-min}
-            [mobile-navbar {:display "none"}])
 
   [mobile-navbar__menu {:position "absolute"
                         :top 0
@@ -73,4 +71,9 @@
 
   [mobile-navbar__menu-btn--close {:color orange-1
                                    :top "initial"
-                                   :bottom "225px"}])
+                                   :bottom "225px"}]
+
+  ;; - - - MEDIA QUERIES - - -
+
+  (at-media {:min-width desktop-navbar-min}
+            [mobile-navbar {:display "none"}]))
