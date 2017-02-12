@@ -270,7 +270,7 @@
                                     :animation "visuals-3 0.5s infinite"}]
 
   [desktop-navbar__rainbow--pink {:background-color pink-1
-                                  :animation "visuals-1 0.3s infinite"}]
+                                  :height "50px"}]
 
   ;; Hover
 
