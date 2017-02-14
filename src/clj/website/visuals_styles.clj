@@ -138,7 +138,8 @@
    [visual__title {:padding "16px 8px"
                    :font-size "16px"
                    :font-weight 300
-                   :color gray-2}]
+                   :color gray-2
+                   :line-height "normal"}]
 
    [visual__tag {:color gray-5
                  :margin-left "8px"
