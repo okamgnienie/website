@@ -68,17 +68,17 @@
 (defn visual [data]
   [:div {:class (str "visual visual--" (data :type))}
 
-   (if (= (data :type) "image")
+   (when (= (data :type) "image")
      [image data])
 
-   (if (= (data :type) "embedded-video")
+   (when (= (data :type) "embedded-video")
      [embedded-video (data :code)])
 
    [:div {:class "visual__title"} (data :title)
     (doall (for [tag (data :tags)]
              ^{:key tag} [:span {:class (str
                                          "visual__tag noselect "
-                                         (if (= tag @filter-query) "visual__tag--active"))
+                                         (when (= tag @filter-query) "visual__tag--active"))
                                  :on-click  #(filter-visuals tag)} tag]))]])
 
 ;; -------------------------
@@ -87,7 +87,7 @@
 (defn manage-page [page-number]
   [:div {:class "visuals-pagination noselect"}
    [:a {:class (str "visuals-pagination__arrow visuals-pagination__arrow--left "
-                    (if (= page-number 1)
+                    (when (= page-number 1)
                       "visuals-pagination__arrow--disabled"))
         :href (str "#/visuals/" (dec page-number))}
     [:i {:class "fa fa-long-arrow-left" :aria-hidden "true"}]]
@@ -95,7 +95,7 @@
    [:span {:class "visuals-pagination__current"} page-number]
 
    [:a {:class (str "visuals-pagination__arrow visuals-pagination__arrow--right "
-                    (if (= page-number @max-page)
+                    (when (= page-number @max-page)
                       "visuals-pagination__arrow--disabled"))
         :href (str "#/visuals/" (inc page-number))}
     [:i {:class "fa fa-long-arrow-right" :aria-hidden "true"}]]])
@@ -114,7 +114,7 @@
                :value @filter-query
                :on-change #(filter-visuals (-> % .-target .-value))}]
       [:button {:type "button"
-                :class (str "filter__clear-btn" (if (blank? @filter-query) " filter__clear-btn--visible"))
+                :class (str "filter__clear-btn" (when (blank? @filter-query) " filter__clear-btn--visible"))
                 :on-click reset-filter} "clear"]
       [:div {:class "filter__progress"}]]]
 
