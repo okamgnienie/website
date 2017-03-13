@@ -21,6 +21,8 @@
              [:i {:class (:icon-class l)} (:label l)]])
           (map #(merge %1 %2) icons links))]
 
-    [:form.contact-form
-     [:textarea {:placeholder "Type here what is on your heart."}]
-     [:input {:type "submit" :value "send my message"}]]]])
+    [:form.contact-form.article
+     [:textarea.contact-form__message
+      {:placeholder "You can type here something and"}]
+     [:button.contact-form__send-btn
+      {:type "submit"} "send it"]]]])

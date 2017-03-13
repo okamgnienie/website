@@ -11,6 +11,7 @@
 
             [website.variables :refer [gray-2
                                        gray-3
+                                       blue-2
                                        linkedin-color
                                        facebook-color
                                        github-color
@@ -24,7 +25,9 @@
 (defclass contacts__icon)
 (defclass contacts__icon--vsco)
 
-(defclass contact-form)
+(defclass contact-form__author)
+(defclass contact-form__message)
+(defclass contact-form__send-btn)
 
 ;; ------
 ;; Styles
@@ -65,26 +68,26 @@
     [:&.fa-github {:color github-color}]
     [:&.fa-twitter {:color twitter-color}]]
 
-   [contact-form
-    [:textarea {:width "100%"
-                :height "200px"
-                :border-radius 0
-                :display "block"
-                :margin-bottom "16px"
-                :resize "none"
-                :transition "border-color 0.3s ease"
-                :padding "10px"
-                :font-size "20px"
-                :font-weight 300}]
-    [:input {:background-color gray-3
-             :border-radius 0
-             :border "none"
-             :color gray-2
-             :font-size "20px"
-             :float "right"
-             :font-weight "300"
-             :text-transform "uppercase"
-             :padding "10px 30px"
-             :min-width "150px"}]]
+   [contact-form__message {:width "100%"
+                           :min-height "200px"
+                           :border-radius 0
+                           :display "block"
+                           :margin-bottom "10px"
+                           :background-color gray-2
+                           :border "none"
+                           :resize "none"
+                           :padding "10px"
+                           :font-size "20px"
+                           :font-weight 300}]
 
-   ])
+
+   [contact-form__send-btn {:background-color blue-2
+                            :border-radius 0
+                            :border "none"
+                            :color gray-2
+                            :font-size "20px"
+                            :float "right"
+                            :font-weight "300"
+                            :text-transform "uppercase"
+                            :padding "10px 30px"
+                            :min-width "150px"}]])
