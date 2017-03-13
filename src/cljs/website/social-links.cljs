@@ -14,4 +14,4 @@
     :link "https://t.com/p_hardyn"}
 
    {:name "VSCO"
-    :link "https://vsco.co/hardyn"}])
+    :link "https://vsco.co/hardyn/collection"}])
