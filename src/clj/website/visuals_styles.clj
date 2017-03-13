@@ -164,7 +164,6 @@
                                        :height "100%"}]
 
    [visuals-pagination {:text-align "center"
-                        :margin-bottom "50px"
                         :color gray-2
                         :font-weight 300}]
 
