@@ -10,6 +10,7 @@
                                       input]]
 
             [website.variables :refer [gray-2
+                                       red-1
                                        gray-3
                                        blue-2
                                        linkedin-color
@@ -28,6 +29,8 @@
 (defclass contact-form__author)
 (defclass contact-form__field)
 (defclass contact-form__field--message)
+(defclass contact-form__field--invalid)
+
 (defclass contact-form__send-btn)
 
 ;; ------
@@ -83,6 +86,10 @@
                                  :padding-left "7px"}]
 
    [contact-form__field--message {:min-height "200px"}]
+
+   [contact-form__field--invalid {:border-left (str "3px solid " red-1 " !important")
+                                  :color red-1
+                                  :padding-left "7px"}]
 
    [contact-form__send-btn {:background-color blue-2
                             :border-radius 0
