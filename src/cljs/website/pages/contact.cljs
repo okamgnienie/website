@@ -22,7 +22,11 @@
           (map #(merge %1 %2) icons links))]
 
     [:form.contact-form.article
-     [:textarea.contact-form__message
-      {:placeholder "You can type here something and"}]
+     [:input.contact-form__field
+      {:placeholder "Your email address" :required true}]
+     [:textarea.contact-form__field.contact-form__field--message
+      {:placeholder "Your message" :required true}]
+     [:input.contact-form__field
+      {:placeholder "2 + 10 + 30 = ?" :required true}]
      [:button.contact-form__send-btn
-      {:type "submit"} "send it"]]]])
+      {:type "submit"} "send"]]]])

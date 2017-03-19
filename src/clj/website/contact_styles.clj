@@ -26,7 +26,8 @@
 (defclass contacts__icon--vsco)
 
 (defclass contact-form__author)
-(defclass contact-form__message)
+(defclass contact-form__field)
+(defclass contact-form__field--message)
 (defclass contact-form__send-btn)
 
 ;; ------
@@ -68,18 +69,20 @@
     [:&.fa-github {:color github-color}]
     [:&.fa-twitter {:color twitter-color}]]
 
-   [contact-form__message {:width "100%"
-                           :min-height "200px"
-                           :border-radius 0
-                           :display "block"
-                           :margin-bottom "10px"
-                           :background-color gray-2
-                           :border "none"
-                           :resize "none"
-                           :padding "10px"
-                           :font-size "20px"
-                           :font-weight 300}]
+   [contact-form__field {:width "100%"
+                         :border-radius 0
+                         :display "block"
+                         :background-color gray-2
+                         :border "none"
+                         :resize "none"
+                         :padding "10px"
+                         :font-size "20px"
+                         :font-weight 200}]
 
+   [(focus contact-form__field) {:border-left (str "3px solid " blue-2)
+                                 :padding-left "7px"}]
+
+   [contact-form__field--message {:min-height "200px"}]
 
    [contact-form__send-btn {:background-color blue-2
                             :border-radius 0
@@ -87,7 +90,8 @@
                             :color gray-2
                             :font-size "20px"
                             :float "right"
-                            :font-weight "300"
-                            :text-transform "uppercase"
+                            :font-weight 200
+                            :text-transform "capitalize"
                             :padding "10px 30px"
-                            :min-width "150px"}]])
+                            :min-width "150px"
+                            :margin-top "10px"}]])
