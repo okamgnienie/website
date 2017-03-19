@@ -23,9 +23,9 @@
 
     [:form.contact-form.article
      [:input.contact-form__field
-      {:placeholder "Your email address" :required true}]
+      {:placeholder "Email address" :required true}]
      [:textarea.contact-form__field.contact-form__field--message
-      {:placeholder "Your message" :required true}]
+      {:placeholder "Message" :required true}]
      [:input.contact-form__field
       {:placeholder "2 + 10 + 30 = ?" :required true}]
      [:button.contact-form__send-btn
