@@ -85,11 +85,11 @@
    [(focus contact-form__field) {:border-left (str "3px solid " blue-2)
                                  :padding-left "7px"}]
 
+   [(focus contact-form__field--invalid) {:border-left (str "3px solid " red-1)}]
+
    [contact-form__field--message {:min-height "200px"}]
 
-   [contact-form__field--invalid {:border-left (str "3px solid " red-1 " !important")
-                                  :color red-1
-                                  :padding-left "7px"}]
+   [contact-form__field--invalid {:color red-1}]
 
    [contact-form__send-btn {:background-color blue-2
                             :border-radius 0
