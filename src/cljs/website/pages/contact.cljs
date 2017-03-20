@@ -1,11 +1,14 @@
 (ns website.contact
   (:require [reagent.core :as r]
 
-            [website.utils :refer [validate-email]]
+            [website.utils :refer [validate-email riddles]]
             [website.social-links :refer [links]]))
 
 (def form-data (r/atom {:email {:value "" :valid nil}
-                        :message {:value "" :valid nil}}))
+                        :message {:value "" :valid nil}
+                        :riddle {:value "" :valid nil}}))
+
+(def riddle (rand-nth riddles))
 
 (def icons [{:icon-class "fa fa-3x fa-linkedin"}
             {:icon-class "fa fa-3x fa-facebook"}
@@ -20,6 +23,10 @@
 (defn update-message [message]
   (swap! form-data assoc :message {:value message
                                    :valid (< 0 (count message))}))
+
+(defn update-riddle [answer]
+  (swap! form-data assoc :riddle {:value answer
+                                  :valid (= (riddle :answer) (int answer))}))
 
 (defn contact []
   [:div.view.view--contact
@@ -38,6 +45,7 @@
     [:form.contact-form.article
      [:input.contact-form__field
       {:placeholder "Email address"
+       :type "email"
        :required true
        :value (get-in @form-data [:email :value])
        :on-change #(update-email (-> % .-target .-value))
@@ -50,6 +58,11 @@
        :class (when (false? (get-in @form-data [:message :valid]))
                 "contact-form__field--invalid")}]
      [:input.contact-form__field
-      {:placeholder "2 + 10 + 30 = ?" :required true}]
+      {:placeholder (riddle :question)
+       :type "text"
+       :required true
+       :on-change #(update-riddle (-> % .-target .-value))
+       :class (when (false? (get-in @form-data [:riddle :valid]))
+                "contact-form__field--invalid")}]
      [:button.contact-form__send-btn
       {:type "submit"} "send"]]]])
