@@ -17,6 +17,7 @@
                                        facebook-color
                                        github-color
                                        twitter-color]]))
+
 ;; --------------
 ;; Custom classes
 
@@ -35,6 +36,9 @@
 
 ;; ------
 ;; Styles
+
+(defn get-validation-border [color]
+  {:border-left (str "3px solid " color)})
 
 (defstyles styles
 
@@ -82,10 +86,10 @@
                          :font-size "20px"
                          :font-weight 200}]
 
-   [(focus contact-form__field) {:border-left (str "3px solid " blue-2)
-                                 :padding-left "7px"}]
+   [(focus contact-form__field) (merge {:padding-left "7px"}
+                                       (get-validation-border blue-2))]
 
-   [(focus contact-form__field--invalid) {:border-left (str "3px solid " red-1)}]
+   [(focus contact-form__field--invalid) (get-validation-border red-1)]
 
    [contact-form__field--message {:min-height "200px"}]
 
