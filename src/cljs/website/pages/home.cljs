@@ -1,9 +1,14 @@
 (ns website.home)
 
+(defn landing-section []
+  [:div.container-fluid.landing
+   [:div.landing__text "I'm just a placeholder."]])
+
 (defn home []
   [:div.view.view--home
-   [:div.container-fluid.landing
-    [:div.landing__text "I'm just a placeholder."]]
+
+   [landing-section]
+
    [:div.container.article
 
     [:p "My name is " [:strong "Przemyslaw Hardyn"] " and I was born in " [:strong "Cracow"] "," [:strong " Poland"] ". What you can see here is my kingdom, where I was free of limits, specifications and time schedules, to create what I truly believe describes me."]
