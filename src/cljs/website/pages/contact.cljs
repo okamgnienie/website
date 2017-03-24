@@ -28,41 +28,44 @@
   (swap! form-data assoc :riddle {:value answer
                                   :valid (= (riddle :answer) (int answer))}))
 
+(defn contacts []
+  [:div.contacts
+   (map (fn [l]
+          [:a.contacts__icon {:key (:link l)
+                              :class (:class l)
+                              :target "_blank"
+                              :href (:link l)}
+           [:i {:class (:icon-class l)} (:label l)]])
+        (map #(merge %1 %2) icons links))])
+
+(defn contact-form []
+  [:form.contact-form.article
+   [:input.contact-form__field
+    {:placeholder "Email address"
+     :type "email"
+     :required true
+     :value (get-in @form-data [:email :value])
+     :on-change #(update-email (-> % .-target .-value))
+     :class (when (false? (get-in @form-data [:email :valid]))
+              "contact-form__field--invalid")}]
+   [:textarea.contact-form__field.contact-form__field--message
+    {:placeholder "Message"
+     :required true
+     :on-change #(update-message (-> % .-target .-value))
+     :class (when (false? (get-in @form-data [:message :valid]))
+              "contact-form__field--invalid")}]
+   [:input.contact-form__field
+    {:placeholder (riddle :question)
+     :type "text"
+     :required true
+     :on-change #(update-riddle (-> % .-target .-value))
+     :class (when (false? (get-in @form-data [:riddle :valid]))
+              "contact-form__field--invalid")}]
+   [:button.contact-form__send-btn
+    {:type "submit"} "send"]])
+
 (defn contact []
   [:div.view.view--contact
    [:div.container
-    [:div.contacts
-
-     ;; Social links
-     (map (fn [l]
-            [:a.contacts__icon {:key (:link l)
-                                :class (:class l)
-                                :target "_blank"
-                                :href (:link l)}
-             [:i {:class (:icon-class l)} (:label l)]])
-          (map #(merge %1 %2) icons links))]
-
-    [:form.contact-form.article
-     [:input.contact-form__field
-      {:placeholder "Email address"
-       :type "email"
-       :required true
-       :value (get-in @form-data [:email :value])
-       :on-change #(update-email (-> % .-target .-value))
-       :class (when (false? (get-in @form-data [:email :valid]))
-                "contact-form__field--invalid")}]
-     [:textarea.contact-form__field.contact-form__field--message
-      {:placeholder "Message"
-       :required true
-       :on-change #(update-message (-> % .-target .-value))
-       :class (when (false? (get-in @form-data [:message :valid]))
-                "contact-form__field--invalid")}]
-     [:input.contact-form__field
-      {:placeholder (riddle :question)
-       :type "text"
-       :required true
-       :on-change #(update-riddle (-> % .-target .-value))
-       :class (when (false? (get-in @form-data [:riddle :valid]))
-                "contact-form__field--invalid")}]
-     [:button.contact-form__send-btn
-      {:type "submit"} "send"]]]])
+    [contacts]
+    [contact-form]]])
