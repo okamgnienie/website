@@ -11,7 +11,8 @@
             [website.home-styles :as home]
             [website.hours-styles :as hours]
             [website.contact-styles :as contact]
-            [website.rainbow-text :refer [rainbow-text]]))
+            [website.rainbow-text :refer [rainbow-text]]
+            [website.message-styles :as message]))
 
 (def styles
   [reset
@@ -26,4 +27,5 @@
    visuals/styles
    hours/styles
    contact/styles
+   message/styles
    rainbow-text])
