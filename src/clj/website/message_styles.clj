@@ -14,8 +14,9 @@
 (defclass message__content)
 (defclass message__close-btn)
 
-;; States
+;; Options
 (defclass message--hidden)
+(defclass message--closable)
 
 ;; Themes
 (defclass message--bright)
@@ -25,7 +26,9 @@
 
   [message {:min-height "50px"
             :position "relative"
-            :padding "10px 25px 10px 10px"}]
+            :padding "10px"}]
+
+  [message--closable {:padding-right "25px"}]
 
   [message__title {:font-size "18px"
                    :margin-bottom "10px"}]
