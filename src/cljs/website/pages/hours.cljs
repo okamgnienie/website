@@ -1,11 +1,14 @@
-(ns website.hours)
+(ns website.hours
+  (:require [website.message :refer [message]]))
+
+(defn work-in-progress-message []
+  [message
+   "Creation of this section is currently in progress"
+   [:span
+    "Come back in the near future to see the " [:strong "Hours"] " project."]
+   "bright"])
 
 (defn hours []
   [:div.view.view--hours
    [:div.container
-    [:div.hours-gallery
-
-     (map (fn [k]
-            [:img.hours-gallery__item {:key k
-                                       :src (str "/images/hours/" k ".jpg")}])
-          (range 1 100))]]])
+    [work-in-progress-message]]])
