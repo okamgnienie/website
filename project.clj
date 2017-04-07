@@ -1,4 +1,4 @@
-(defproject website "0.1.0-SNAPSHOT"
+(defproject website "1.0.0"
   :description "Personal portfolio website"
   :url "http://przemyslawhardyn.com"
 
