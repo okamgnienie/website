@@ -68,4 +68,5 @@
   [:div.view.view--contact
    [:div.container
     [contacts]
-    [contact-form]]])
+    ;; [contact-form]
+    ]])
