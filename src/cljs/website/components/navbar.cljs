@@ -163,7 +163,11 @@
 
 (def mobile-menu-open (r/atom false))
 
-(def titles ["home" "work" "hours" "visuals" "contact"])
+(def menu-items [{:title "home" :path "/"}
+                 {:title "work" :path "/work"}
+                 {:title "hours" :path "/hours"}
+                 {:title "visuals" :path "/visuals"}
+                 {:title "contact" :path "/contact"}])
 
 (defn navbar [state-name]
   [:div.navbar.container-fluid
@@ -184,14 +188,14 @@
       "CLOSE"]
 
      [:ul.mobile-navbar__menu-list
-      (map (fn [t]
-             [:li.mobile-navbar__menu-item {:key t}
+      (map (fn [item]
+             [:li.mobile-navbar__menu-item {:key (item :title)}
               [:a.mobile-navbar__menu-link.navbar__animated-underline
-               {:href (str "#/" t)
+               {:href (str "#" (item :path))
                 :on-click #(reset! mobile-menu-open false)
-                :class (str (when (= state-name t)
-                              "navbar__animated-underline--active"))} t]])
-           titles)]]]
+                :class (str (when (= state-name (item :title))
+                              "navbar__animated-underline--active"))} (item :title)]])
+           menu-items)]]]
 
    ;; - - - DESKTOP NAVBAR - - -
 
