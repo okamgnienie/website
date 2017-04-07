@@ -91,19 +91,19 @@
 
 ;; - HOME -
 
-(defn home-button [state-name]
+(defn home-button [details state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--home
-   [:a {:href "#/"}
+   [:a {:href (str path-prefix (details :path))}
     [:div.desktop-navbar__title.desktop-navbar__title--home
      [:div.navbar__animated-underline
-      {:class (when (= state-name "home") active-button-class)}
+      {:class (when (= state-name (details :title)) active-button-class)}
       [:span "Ho"] "me"]]]])
 
 ;; - WORK -
 
-(defn work-button [state-name]
+(defn work-button [details state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--work
-   [:a {:href "#/work"}
+   [:a {:href (str path-prefix (details :path))}
     [:div.desktop-navbar__magic.desktop-navbar__magic--work
      (map (fn [c] [:div.desktop-navbar__digital-line
                    {:class (str "desktop-navbar__digital-line--" c) :key c}])
@@ -117,48 +117,48 @@
                  (range 1 3)))
           work-colors)]
     [:div.desktop-navbar__title.desktop-navbar__title--work.navbar__animated-underline
-     {:class (when (= state-name "work") active-button-class)}
-     [:span "Work"]]]])
+     {:class (when (= state-name (details :title)) active-button-class)}
+     [:span (details :title)]]]])
 
 ;; - VISUALS -
 
-(defn visuals-button [state-name]
+(defn visuals-button [details state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--visuals
-   [:a {:href "#/visuals"}
+   [:a {:href (str path-prefix (details :path))}
     [:div {:class "desktop-navbar__magic desktop-navbar__magic--visuals"}
      (map (fn [c]
             [:div.desktop-navbar__rainbow
              {:class (str "desktop-navbar__rainbow--" c)
               :key c}]) visuals-colors)]
     [:div.desktop-navbar__title.desktop-navbar__title--visuals.navbar__animated-underline
-     {:class (when (= state-name "visuals") active-button-class)}
-     [:span "Visuals"]]]])
+     {:class (when (= state-name (details :title)) active-button-class)}
+     [:span (details :title)]]]])
 
 ;; - HOURS -
 
-(defn hours-button [state-name]
+(defn hours-button [details state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--hours
    {:on-mouse-enter #(start-animating-time)
     :on-mouse-leave #(stop-animating-time)}
-   [:a {:href "#/hours"}
+   [:a {:href (str path-prefix (details :path))}
     [:div.desktop-navbar__magic.desktop-navbar__magic--hours
      (map (fn [k] [:div.desktop-navbar__time {:key k}]) (range 12))
      [:div.desktop-navbar__title.desktop-navbar__title--hours.navbar__animated-underline
-      {:class (when (= state-name "hours") active-button-class)}
-      [:span "Hours"]]]]])
+      {:class (when (= state-name (details :title)) active-button-class)}
+      [:span (details :title)]]]]])
 
 ;; - CONTACT -
 
-(defn contact-button [state-name]
+(defn contact-button [details state-name]
   [:li.desktop-navbar__item.desktop-navbar__item--contact
-   [:a {:href "#/contact"}
+   [:a {:href (str path-prefix (details :path))}
     [:div.desktop-navbar__magic.desktop-navbar__magic--contact
      (map (fn [k] [:div.desktop-navbar__radio-wave {:key k}]) (range 8))]
     [:div.desktop-navbar__title.desktop-navbar__title--contact.navbar__animated-underline
-     {:class (when (= state-name "contact") active-button-class)
+     {:class (when (= state-name (details :title)) active-button-class)
       :on-mouse-enter #(start-animating-radio-waves)
       :on-mouse-leave #(stop-animating-radio-waves)}
-     [:span "Contact"]]]])
+     [:span (details :title)]]]])
 
 ;; -------------------------------------
 ;; NAVBAR COMPONENT
@@ -202,8 +202,8 @@
    ;; - - - DESKTOP NAVBAR - - -
 
    [:ul.desktop-navbar.container
-    [home-button state-name]
-    [work-button state-name]
-    [hours-button state-name]
-    [visuals-button state-name]
-    [contact-button state-name]]])
+    [home-button (first menu-items) state-name]
+    [work-button (nth menu-items 1) state-name]
+    [hours-button (nth menu-items 2) state-name]
+    [visuals-button (nth menu-items 3) state-name]
+    [contact-button (nth menu-items 4) state-name]]])
