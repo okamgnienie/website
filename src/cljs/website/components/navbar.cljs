@@ -1,6 +1,8 @@
 (ns website.navbar
   (:require [reagent.core :as r]))
 
+(def path-prefix "#")
+
 (def time-interval (atom nil))
 (def radio-interval (atom nil))
 
@@ -191,7 +193,7 @@
       (map (fn [item]
              [:li.mobile-navbar__menu-item {:key (item :title)}
               [:a.mobile-navbar__menu-link.navbar__animated-underline
-               {:href (str "#" (item :path))
+               {:href (str path-prefix (item :path))
                 :on-click #(reset! mobile-menu-open false)
                 :class (str (when (= state-name (item :title))
                               "navbar__animated-underline--active"))} (item :title)]])
