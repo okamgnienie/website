@@ -13,11 +13,11 @@
    "div.desktop-navbar__time:not(.desktop-navbar__time--active)"))
 
 (defn animation-finished [elem handler]
-  (.addEventListener elem "webkitAnimationEnd" handler)
-  (.addEventListener elem "mozAnimationEnd" handler)
-  (.addEventListener elem "MSAnimationEnd" handler)
-  (.addEventListener elem "oanimationend" handler)
-  (.addEventListener elem "animationend" handler))
+  (doseq [e ["webkitAnimationEnd"
+             "mozAnimationEnd"
+             "MSAnimationEnd"
+             "oanimationend"
+             "animationend"]] (.addEventListener elem e handler)))
 
 ;; - - - TIME ANIMATION - - -
 
