@@ -1,14 +1,13 @@
 (ns website.hours
   (:require [website.message :refer [message]]))
 
-(defn work-in-progress-message []
-  [message
-   "Creation of this section is currently in progress"
-   [:span
-    "Come back in the near future to see the " [:strong "Hours"] " project."]
-   "bright"])
+(def number-of-images 196)
 
 (defn hours []
   [:div.view.view--hours
    [:div.container
-    [work-in-progress-message]]])
+    [:div.hours-gallery
+     (map (fn [k]
+            [:img.hours-gallery__item
+             {:key k :src (str "/images/hours/" k ".jpg")}])
+          (range 1 number-of-images))]]])
