@@ -1,7 +1,7 @@
 (ns website.hours
   (:require [website.message :refer [message]]))
 
-(def number-of-images 196)
+(def number-of-images 202)
 
 (defn hours []
   [:div.view.view--hours
