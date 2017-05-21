@@ -1,6 +1,5 @@
 (ns website.navbar-styles
   (:require [garden.def :refer [defstyles]]
-            [garden.stylesheet :refer [at-media]]
             [garden.selectors :refer [defclass after]]
             [website.variables :refer [gray-1
                                        main-font
