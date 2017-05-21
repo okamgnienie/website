@@ -54,13 +54,15 @@
 
 (let [color red-3 ; shadow color
       unit "px " ; shadow unit (with spacing)
-      length 8] ; shadow length
+      length 8 ; shadow length
+      x "-50%"
+      y "-55%"]
 
   (defstyles revolve
 
     [revolve {:opacity 0
-              :transform (str "translate3d(calc(-50% - " length unit "), calc(-50% + " length unit "), 0)")
-              :animation "revolve 2s cubic-bezier(0.47, 0.01, 0, 1.01) forwards 0.5s"
+              :transform (str "translate3d(calc(" x " - " length unit "), calc(" y " + " length unit "), 0)")
+              :animation "revolve 0.6s cubic-bezier(0.47, 0.01, 0, 1.01) forwards 0.9s"
               :text-transform "uppercase"
               :margin-left "0.1em"
               :letter-spacing "0.2em"
@@ -74,7 +76,7 @@
     (at-keyframes "revolve"
                   [:to
                    {:opacity 1
-                    :transform "translate3d(-50%, -55%, 0)"
+                    :transform (str "translate3d(" x ", " y ", 0)")
                     :text-shadow (->> (range 1 length)
                                       (map #(str "-" % unit
                                                  % unit
