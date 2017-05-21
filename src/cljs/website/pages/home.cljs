@@ -2,7 +2,7 @@
 
 (defn landing-section []
   [:div.container-fluid.landing
-   [:div.landing__text "I'm just a placeholder."]])
+   [:div.landing__text.revolve "Rzeczy"]])
 
 (defn home []
   [:div.view.view--home

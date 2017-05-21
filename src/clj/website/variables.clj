@@ -22,6 +22,7 @@
 
 (def red-1 "#FF0000")
 (def red-2 "#ff4a4a")
+(def red-3 "#F33644")
 
 (def yellow-1 "#F5FF00")
 (def yellow-2 "#FFC107")

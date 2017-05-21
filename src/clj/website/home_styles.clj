@@ -1,7 +1,8 @@
 (ns website.home-styles
   (:require [garden.def :refer [defstyles]]
-            [garden.selectors :refer [defclass before]]
-            [website.variables :refer [gray-2 gray-6]]))
+            [garden.stylesheet :refer [at-media]]
+            [garden.selectors :refer [defclass]]
+            [website.variables :refer [gray-2 desktop-navbar-min desktop-min]]))
 
 ;; --------------
 ;; Custom classes
@@ -22,19 +23,15 @@
 
    [landing {:background-color gray-2
              :font-weight "300"
-             :color gray-6
              :height "400px"
              :margin-bottom "20px"
-             :text-align "center"}]
+             :position "relative"}]
 
-   [(landing before) {:content "''"
-                      :display "inline-block"
-                      :height "100%"
-                      :vertical-align "middle"
-                      :margin-right "-0.25em"}]
+   [landing__text {:font-size "9em"
+                   :font-family "'Montserrat', sans-serif"}]
 
-   [landing__text {:display "inline-block"
-                   :vertical-align "middle"
-                   :font-size "40px"}]
+   (at-media {:max-width desktop-min}
+             [landing__text {:font-size "6em"}])
 
-   ])
+   (at-media {:max-width desktop-navbar-min}
+             [landing__text {:font-size "3.5em"}])])
