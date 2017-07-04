@@ -1,4 +1,4 @@
-(ns website.core
+(ns website.app
   (:require-macros [secretary.core :refer [defroute]])
   (:import goog.History)
   (:require [secretary.core :as secretary]
@@ -7,14 +7,14 @@
             [reagent.core :as r]
             [clojure.string :refer [blank? split]]
 
-            [website.home :refer [home]]
-            [website.work :refer [work]]
-            [website.hours :refer [hours]]
-            [website.visuals :refer [visuals]]
-            [website.contact :refer [contact]]
+            [website.pages.home :refer [home]]
+            [website.pages.work :refer [work]]
+            [website.pages.hours :refer [hours]]
+            [website.pages.visuals :refer [visuals]]
+            [website.pages.contact :refer [contact]]
 
-            [website.navbar :refer [navbar]]
-            [website.footer :refer [footer]]))
+            [website.components.navbar :refer [navbar]]
+            [website.components.footer :refer [footer]]))
 
 
 ;; -------------------------
@@ -114,6 +114,6 @@
 
   (r/render [current-page] (.getElementById js/document "app")))
 
-(defn ^:export init []
+(defn init []
   (app-routes)
   (mount-root))

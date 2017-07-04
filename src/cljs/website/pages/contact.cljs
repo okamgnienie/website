@@ -1,4 +1,4 @@
-(ns website.contact
+(ns website.pages.contact
   (:require [reagent.core :as r]
 
             [website.utils :refer [validate-email riddles]]

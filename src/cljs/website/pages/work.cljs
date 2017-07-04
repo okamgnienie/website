@@ -1,5 +1,5 @@
-(ns website.work
-  (:require [website.message :refer [message]]))
+(ns website.pages.work
+  (:require [website.components.message :refer [message]]))
 
 (defn work-in-progress-message []
   [message

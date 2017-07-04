@@ -1,5 +1,5 @@
-(ns website.visuals
-  (:require [website.message :refer [message]]))
+(ns website.pages.visuals
+  (:require [website.components.message :refer [message]]))
 
 ;; ------------------------
 ;; Work in progress message

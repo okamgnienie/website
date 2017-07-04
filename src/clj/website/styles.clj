@@ -1,4 +1,4 @@
-(ns website.css
+(ns website.styles
   (:require [website.reset-styles :refer [reset]]
             [website.navbar-animations :as navbar-animations]
             [website.animations :as animations]
@@ -14,7 +14,7 @@
             [website.rainbow-text :refer [rainbow-text]]
             [website.message-styles :as message]))
 
-(def styles
+(def all
   [reset
    animations/all
    navbar-animations/all

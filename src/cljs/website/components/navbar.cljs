@@ -1,4 +1,4 @@
-(ns website.navbar
+(ns website.components.navbar
   (:require [reagent.core :as r]))
 
 (def path-prefix "#")

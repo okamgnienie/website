@@ -1,4 +1,4 @@
-(ns website.home)
+(ns website.pages.home)
 
 (defn landing-section []
   [:div.container-fluid.landing

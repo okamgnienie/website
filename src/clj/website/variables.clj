@@ -1,9 +1,5 @@
 (ns website.variables)
 
-;; --- - --- - --- PREFIXES --- - --- - ---
-
-(def vendors ["moz" "webkit" "o"])
-
 ;; --- - --- - --- COLORS --- - --- - ---
 
 (def white-1 "#ffffff")

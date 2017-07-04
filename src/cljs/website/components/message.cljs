@@ -1,4 +1,4 @@
-(ns website.message
+(ns website.components.message
   (:require [reagent.core :as r]))
 
 (defn message [title text theme closable]

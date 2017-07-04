@@ -1,5 +1,5 @@
-(ns website.hours
-  (:require [website.message :refer [message]]))
+(ns website.pages.hours
+  (:require [website.components.message :refer [message]]))
 
 (def number-of-images 202)
 

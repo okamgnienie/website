@@ -1,4 +1,4 @@
-(ns website.footer
+(ns website.components.footer
   (:require [website.social-links :refer [links]]))
 
 (def icons [{:class "footer__link--linkedin"
