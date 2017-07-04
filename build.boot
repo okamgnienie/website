@@ -47,7 +47,7 @@
         (reload)
         (build)))
 
-(deftask prod []
+(deftask pro []
   (comp (production)
         (build)
         (target)))
