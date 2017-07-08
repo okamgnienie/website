@@ -1,4 +1,5 @@
 (ns website.visuals-styles
+    (:refer-clojure :exclude [> filter])
   (:require [garden.def :refer [defstyles]]
 
             [garden.selectors :refer [defclass

@@ -1,4 +1,5 @@
 (ns website.reset-styles
+  (:refer-clojure :exclude [*])
   (:require [garden.def :refer [defstyles]]
             [garden.selectors :refer [defselector blockquote q before after]]))
 
